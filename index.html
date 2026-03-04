@@ -1,12 +1,18 @@
-<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title data-i18n="title">柯德瑋 (TeWei, Ko) | 資工學生與 AI 愛好者</title><style>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="title">柯德瑋 (TeWei, Ko) | 資工學生與 AI 愛好者</title>
+<style>
 :root { --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%); --card-bg: white; --text: #333; --sub-text: #666; --primary: #667eea; --secondary: #764ba2; --project-bg: #f8f9fa; }
-[data-theme="fix: rebuild index.html with correct structuredark"] { --bg: #1a1a2e; --card-bg: #16213e; --text: #e94560; --sub-text: #95a5a6; --primary: #e94560; --secondary: #0f3460; --project-bg: #1f4068; }
+[data-theme="dark"] { --bg: #1a1a2e; --card-bg: #16213e; --text: #e94560; --sub-text: #95a5a6; --primary: #e94560; --secondary: #0f3460; --project-bg: #1f4068; }
 * { margin: 0; padding: 0; box-sizing: border-box; transition: 0.3s; }
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; }
 .controls { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
 button { padding: 8px 12px; cursor: pointer; border-radius: 8px; border: none; background: var(--card-bg); color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 nav { background: var(--card-bg); padding: 10px 20px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: sticky; top: 20px; z-index: 999; }
-nav a { text-de<div class="controls"><button id="themeToggle">🌙</button><button onclick="setLang('zh-TW')">繁中</button><button onclick="setLang('en')">EN</button></div><nav><a href="#about" data-i18n="nav.about">關於我</a><a href="#skills" data-i18n="nav.skills">技能</a><a href="#projects" data-i18n="nav.projects">專案</a><a href="#goals" data-i18n="nav.goals">目標</a><a href="#contact" data-i18n="nav.contact">聯絡我</a></nav><div class="container"><header><h1 data-i18n="hero.title">柯德瑋 (TeWei, Ko)</h1><p class="subtitle" data-i18n="hero.subtitle">資訊工程學生 | AI 與量子運算愛好者</p></header><section id="about"><h2 data-i18n="section.about">關於我</h2><p data-i18n="about.content">我是南臺科技大學資訊工程系大一學生，目標透過轉學考進入國立大學，深造 AI、高效能運算與人機互動等領域。</p></section><section id="skills"><h2 data-i18n="section.skills">技能</h2><ul data-i18n="skills.list"><li><b>程式語言：</b>C++, Python, Go, Java, C</li><li><b>開發工具：</b>Git, VS Code, Docker</li><li><b>興趣領域：</b>AI/ML, 量子運算, HPC, HCI</li></ul></section><section id="projects"><h2 data-i18n="section.projects">專案作品</h2><div class="project"><h3>📊 Calc Tracker</h3><p data-i18n="project.calc">微積分練習與錯題管理系統 (Flask + SQLite)</p><a href="https://github.com/TeWei02/calc-tracker" target="_blank">View Project ↗</a></div><div class="project"><h3>📖 AI-Reader</h3><p data-i18n="project.reader">多模態敘事體驗系統 (Project H.O.L.O.)</p><a href="https://github.com/TeWei02/AI-Reader" target="_blank">View Project ↗</a></div></section><section id="goals"><h2 data-i18n="section.goals">目標</h2><ul data-i18n="goals.list"><li>2026 年：進入國立大學資工系</li><li>深化 AI 與量子運算能力</li><li>參與國際交流與研究計畫</li></ul></section><section id="contact"><h2 data-i18n="section.contact">聯絡我</h2><div class="contact"><a href="https://github.com/TeWei02">GitHub</a><a href="mailto:i910418@icloud.com">Email</a></div></section></div><button id="backToTop">↑</button>coration: none; color: var(--text); margin: 0 10px; font-weight: bold; }
+nav a { text-decoration: none; color: var(--text); margin: 0 10px; font-weight: bold; }
 .container { max-width: 800px; background: var(--card-bg); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 48px; width: 100%; }
 h1 { font-size: 2.5rem; margin-bottom: 8px; color: var(--primary); }
 .subtitle { font-size: 1.2rem; color: var(--sub-text); margin-bottom: 32px; }
@@ -16,7 +22,34 @@ h2 { font-size: 1.5rem; margin-bottom: 16px; color: var(--secondary); border-bot
 .contact { display: flex; gap: 16px; flex-wrap: wrap; }
 .contact a { padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 6px; }
 #backToTop { position: fixed; bottom: 30px; right: 30px; display: none; }
-</style></head><body><script>
+</style>
+</head>
+<body>
+<div class="controls">
+<button id="themeToggle">🌙</button>
+<button onclick="setLang('zh-TW')">繁中</button>
+<button onclick="setLang('en')">EN</button>
+</div>
+<nav>
+<a href="#about" data-i18n="nav.about">關於我</a>
+<a href="#skills" data-i18n="nav.skills">技能</a>
+<a href="#projects" data-i18n="nav.projects">專案</a>
+<a href="#goals" data-i18n="nav.goals">目標</a>
+<a href="#contact" data-i18n="nav.contact">聯絡我</a>
+</nav>
+<div class="container">
+<header>
+<h1 data-i18n="hero.title">柯德瑋 (TeWei, Ko)</h1>
+<p class="subtitle" data-i18n="hero.subtitle">資訊工程學生 | AI 與量子運算愛好者</p>
+</header>
+<section id="about"><h2 data-i18n="section.about">關於我</h2><p data-i18n="about.content">我是南臺科技大學資訊工程系大一學生，目標透過轉學考進入國立大學，深造 AI、高效能運算與人機互動等領域。</p></section>
+<section id="skills"><h2 data-i18n="section.skills">技能</h2><ul data-i18n="skills.list"><li><b>程式語言：</b>C++, Python, Go, Java, C</li><li><b>開發工具：</b>Git, VS Code, Docker</li><li><b>興趣領域：</b>AI/ML, 量子運算, HPC, HCI</li></ul></section>
+<section id="projects"><h2 data-i18n="section.projects">專案作品</h2><div class="project"><h3>📊 Calc Tracker</h3><p data-i18n="project.calc">微積分練習與錯題管理系統 (Flask + SQLite)</p><a href="https://github.com/TeWei02/calc-tracker" target="_blank">View Project ↗</a></div><div class="project"><h3>📖 AI-Reader</h3><p data-i18n="project.reader">多模態敘事體驗系統 (Project H.O.L.O.)</p><a href="https://github.com/TeWei02/AI-Reader" target="_blank">View Project ↗</a></div></section>
+<section id="goals"><h2 data-i18n="section.goals">目標</h2><ul data-i18n="goals.list"><li>2026 年：進入國立大學資工系</li><li>深化 AI 與量子運算能力</li><li>參與國際交流與研究計畫</li></ul></section>
+<section id="contact"><h2 data-i18n="section.contact">聯絡我</h2><div class="contact"><a href="https://github.com/TeWei02">GitHub</a><a href="mailto:i910418@icloud.com">Email</a></div></section>
+</div>
+<button id="backToTop">↑</button>
+<script>
 const messages = {
   "zh-TW": {
     "title": "柯德瑋 (TeWei, Ko) | 資工學生與 AI 愛好者",
@@ -35,7 +68,6 @@ const messages = {
     "section.goals": "Goals", "section.contact": "Contact Me"
   }
 };
-
 function setLang(lang) {
   localStorage.setItem('lang', lang);
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -45,7 +77,6 @@ function setLang(lang) {
   if (lang === 'en') document.title = messages.en.title;
   else document.title = messages['zh-TW'].title;
 }
-
 const themeToggle = document.getElementById('themeToggle');
 themeToggle.onclick = () => {
   const isDark = document.documentElement.dataset.theme === 'dark';
@@ -53,17 +84,17 @@ themeToggle.onclick = () => {
   themeToggle.innerText = isDark ? '🌙' : '☀️';
   localStorage.setItem('theme', isDark ? 'light' : 'dark');
 };
-
 const backToTop = document.getElementById('backToTop');
 window.onscroll = () => {
   backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
 };
 backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
 // Init
 const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('zh') ? 'zh-TW' : 'en');
 setLang(savedLang);
 const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 document.documentElement.dataset.theme = savedTheme;
 themeToggle.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-</script></body></html>
+</script>
+</body>
+</html>
