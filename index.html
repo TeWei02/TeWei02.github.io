@@ -1,172 +1,69 @@
-<!DOCTYPE html><html lang="zh-Hant"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>柯德瑋（TeWei,Ko） | 資工學生與 AI 愛好者</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23667eea'/%3E%3Cpath d='M30 65 Q50 90 70 65 L70 50 Q50 65 30 50 Z' fill='%23F5C5A3'/%3E%3Cellipse cx='50' cy='45' rx='24' ry='28' fill='%23F5C5A3'/%3E%3Cpath d='M30 30 Q30 18 50 18 Q70 18 70 30 L70 45 Q50 48 30 45 Z' fill='%23222'/%3E%3Cpath d='M25 42 L75 42 L75 48 L25 48 Z' fill='%23333'/%3E%3Cpath d='M32 38 L44 38 M56 38 L68 38' stroke='%23444' stroke-width='3' stroke-linecap='round'/%3E%3Crect x='30' y='40' width='16' height='8' rx='2' fill='rgba(255,255,255,0.3)' stroke='%23222' stroke-width='1'/%3E%3Crect x='54' y='40' width='16' height='8' rx='2' fill='rgba(255,255,255,0.3)' stroke='%23222' stroke-width='1'/%3E%3Ccircle cx='38' cy='44' r='1.5' fill='%23000'/%3E%3Ccircle cx='62' cy='44' r='1.5' fill='%23000'/%3E%3Cpath d='M46 58 Q50 62 54 58' stroke='%23c0705a' stroke-width='1' fill='none' stroke-linecap='round'/%3E%3Cpath d='M35 72 L40 65 L45 75 L50 63 L55 75 L60 65 L65 72' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 48px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-            color: #667eea;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 32px;
-        }
-        section {
-            margin-bottom: 32px;
-        }
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-            color: #764ba2;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 8px;
-        }
-        p {
-            margin-bottom: 12px;
-            color: #555;
-        }
-        .project {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            border-left: 4px solid #667eea;
-        }
-        .project h3 {
-            color: #667eea;
-            margin-bottom: 8px;
-        }
-        .project a {
-            color: #764ba2;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .project a:hover {
-            text-decoration: underline;
-        }
-        .contact {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .contact a {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-        .contact a:hover {
-            background: #764ba2;
-        }
-        ul {
-            margin-left: 24px;
-            color: #555;
-        }
-        ul li {
-            margin-bottom: 8px;
-        }
-    </style>
-</head><body>
-    <div class="container">
-        <h1>柯德瑋（TeWei,Ko）</h1>
-        <p class="subtitle">資訊工程學生 | AI 與量子運算愛好者</p>
-        <section>
-            <h2>關於我</h2>
-            <p>我是南臺科技大學資訊工程系大一學生，目標在大二透過轉學考進入國立中字輩大學（中央、中山、中正、中興），持續深造 AI、高效能運算與人機互動等領域。</p>
-            <p>我對人工智慧、量子運算與軟體工程充滿熱情，並積極透過自主專案與學習強化實務能力，為未來的研究與職涯發展打下基礎。</p>
-        </section>
-        <section>
-            <h2>技能</h2>
-            <ul>
-                <li><strong>程式語言：</strong>C++, Python, Go, Java, C</li>
-                <li><strong>開發工具：</strong>Git, VS Code, Terminal, Docker</li>
-                <li><strong>Web 開發：</strong>Flask, SQLAlchemy, HTML/CSS, Bootstrap</li>
-                <li><strong>興趣領域：</strong>AI/ML, 量子運算, HPC, HCI, 半導體技術</li>
-            </ul>
-        </section>
-        <section>
-            <h2>專案作品</h2>
-            <div class="project">
-                <h3>📊 Calc Tracker - 微積分練習與錯題管理系統</h3>
-                <p>為了準備轉學考微積分而開發的 Web 應用程式，使用 Flask + SQLite 實作。系統可記錄每題作答情況、統計各章節正確率，並自動列出需要加強複習的題目。新增統計圖表（Chart.js）、CSV 匯出、AI 提示功能。</p>
-                <p><strong>技術：</strong>Python, Flask, SQLAlchemy, SQLite, Bootstrap, Chart.js, Groq API</p>
-                <a href="https://github.com/TeWei02/calc-tracker" target="_blank">查看專案 →</a>
-            </div>
-            <div class="project">
-                <h3>📖 AI-Reader - 多模態敘事體驗系統（Project H.O.L.O.）</h3>
-                <p>打破文字作為唯一敘事媒介的限制，透過 AI 深度語意分析與多模態生成，將故事轉化為視覺、聽覺、觸覺體驗。探索人類「感受」故事的新方式。</p>
-                <p><strong>技術：</strong>Python, 生成式 AI, 深度語意分析</p>
-                <a href="https://github.com/TeWei02/AI-Reader" target="_blank">查看專案 →</a>
-            </div>
-            <div class="project">
-                <h3>🤖 UNIVERSAAL_AGENT - 通用 AI Agent 框架</h3>
-                <p>探索通用型 AI Agent 架構，旨在建構具備推理與決策能力的 AI 系統。</p>
-                <p><strong>技術：</strong>Python, LLM Integration</p>
-                <a href="https://github.com/TeWei02/UNIVERSAAL_AGENT" target="_blank">查看專案 →</a>
-            </div>
-            <div class="project">
-                <h3>🧠 Modern_agent - 現代化 AI Agent 模板</h3>
-                <p>提供現代化 AI Agent 開發模板與工具鏈，快速原型開發。</p>
-                <p><strong>技術：</strong>Python, Template</p>
-                <a href="https://github.com/TeWei02/Modern_agent" target="_blank">查看專案 →</a>
-            </div>
-            <div class="project">
-                <h3>📚 ModernReader - 現代閱讀器</h3>
-                <p>探索現代閱讀體驗的 Web 應用，強調易用性與功能性。</p>
-                <p><strong>技術：</strong>JavaScript, Web</p>
-                <a href="https://github.com/TeWei02/ModernReader" target="_blank">查看專案 →</a>
-            </div>
-            <div class="project">
-                <h3>📈 StatSigCalculator - 統計顯著性計算器</h3>
-                <p>用於統計實驗的顯著性計算工具。</p>
-                <p><strong>技術：</strong>TypeScript</p>
-                <a href="https://github.com/TeWei02/StatSigCalculator" target="_blank">查看專案 →</a>
-            </div>
-        </section>
-        <section>
-            <h2>目標</h2>
-            <ul>
-                <li>2026 年：透過轉學考進入國立中字輩大學資工系</li>
-                <li>持續深化 AI、量子運算與軟體工程能力</li>
-                <li>參與研究計畫與國際交流（HPC×AI、國科會、中研院合作）</li>
-                <li>研究所目標：台清交成 AI 相關研究所</li>
-            </ul>
-        </section>
-        <section>
-            <h2>聯絡我</h2>
-            <div class="contact">
-                <a href="https://github.com/TeWei02" target="_blank">GitHub</a>
-                <a href="mailto:i910418@icloud.com">Email</a>
-            </div>
-        </section>
-    </div>
-</body></html>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title data-i18n="title">柯德瑋 (TeWei, Ko) | 資工學生與 AI 愛好者</title><style>
+:root { --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%); --card-bg: white; --text: #333; --sub-text: #666; --primary: #667eea; --secondary: #764ba2; --project-bg: #f8f9fa; }
+[data-theme="dark"] { --bg: #1a1a2e; --card-bg: #16213e; --text: #e94560; --sub-text: #95a5a6; --primary: #e94560; --secondary: #0f3460; --project-bg: #1f4068; }
+* { margin: 0; padding: 0; box-sizing: border-box; transition: 0.3s; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+.controls { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
+button { padding: 8px 12px; cursor: pointer; border-radius: 8px; border: none; background: var(--card-bg); color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+nav { background: var(--card-bg); padding: 10px 20px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: sticky; top: 20px; z-index: 999; }
+nav a { text-de<div class="controls"><button id="themeToggle">🌙</button><button onclick="setLang('zh-TW')">繁中</button><button onclick="setLang('en')">EN</button></div><nav><a href="#about" data-i18n="nav.about">關於我</a><a href="#skills" data-i18n="nav.skills">技能</a><a href="#projects" data-i18n="nav.projects">專案</a><a href="#goals" data-i18n="nav.goals">目標</a><a href="#contact" data-i18n="nav.contact">聯絡我</a></nav><div class="container"><header><h1 data-i18n="hero.title">柯德瑋 (TeWei, Ko)</h1><p class="subtitle" data-i18n="hero.subtitle">資訊工程學生 | AI 與量子運算愛好者</p></header><section id="about"><h2 data-i18n="section.about">關於我</h2><p data-i18n="about.content">我是南臺科技大學資訊工程系大一學生，目標透過轉學考進入國立大學，深造 AI、高效能運算與人機互動等領域。</p></section><section id="skills"><h2 data-i18n="section.skills">技能</h2><ul data-i18n="skills.list"><li><b>程式語言：</b>C++, Python, Go, Java, C</li><li><b>開發工具：</b>Git, VS Code, Docker</li><li><b>興趣領域：</b>AI/ML, 量子運算, HPC, HCI</li></ul></section><section id="projects"><h2 data-i18n="section.projects">專案作品</h2><div class="project"><h3>📊 Calc Tracker</h3><p data-i18n="project.calc">微積分練習與錯題管理系統 (Flask + SQLite)</p><a href="https://github.com/TeWei02/calc-tracker" target="_blank">View Project ↗</a></div><div class="project"><h3>📖 AI-Reader</h3><p data-i18n="project.reader">多模態敘事體驗系統 (Project H.O.L.O.)</p><a href="https://github.com/TeWei02/AI-Reader" target="_blank">View Project ↗</a></div></section><section id="goals"><h2 data-i18n="section.goals">目標</h2><ul data-i18n="goals.list"><li>2026 年：進入國立大學資工系</li><li>深化 AI 與量子運算能力</li><li>參與國際交流與研究計畫</li></ul></section><section id="contact"><h2 data-i18n="section.contact">聯絡我</h2><div class="contact"><a href="https://github.com/TeWei02">GitHub</a><a href="mailto:i910418@icloud.com">Email</a></div></section></div><button id="backToTop">↑</button>coration: none; color: var(--text); margin: 0 10px; font-weight: bold; }
+.container { max-width: 800px; background: var(--card-bg); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 48px; width: 100%; }
+h1 { font-size: 2.5rem; margin-bottom: 8px; color: var(--primary); }
+.subtitle { font-size: 1.2rem; color: var(--sub-text); margin-bottom: 32px; }
+section { margin-bottom: 40px; scroll-margin-top: 80px; }
+h2 { font-size: 1.5rem; margin-bottom: 16px; color: var(--secondary); border-bottom: 2px solid var(--primary); padding-bottom: 8px; }
+.project { background: var(--project-bg); padding: 20px; border-radius: 8px; margin-bottom: 16px; border-left: 4px solid var(--primary); }
+.contact { display: flex; gap: 16px; flex-wrap: wrap; }
+.contact a { padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 6px; }
+#backToTop { position: fixed; bottom: 30px; right: 30px; display: none; }
+</style></head><body><script>
+const messages = {
+  "zh-TW": {
+    "title": "柯德瑋 (TeWei, Ko) | 資工學生與 AI 愛好者",
+    "nav.about": "關於我", "nav.skills": "技能", "nav.projects": "專案", "nav.goals": "目標", "nav.contact": "聯絡我",
+    "hero.title": "柯德瑋 (TeWei, Ko)", "hero.subtitle": "資訊工程學生 | AI 與量子運算愛好者",
+    "section.about": "關於我", "about.content": "我是南臺科技大學資訊工程系大一學生，目標透過轉學考進入國立大學，深造 AI、高效能運算與人機互動等領域。",
+    "section.skills": "技能", "section.projects": "專案作品", "project.calc": "微積分練習與錯題管理系統 (Flask + SQLite)", "project.reader": "多模態敘事體驗系統 (Project H.O.L.O.)",
+    "section.goals": "目標", "section.contact": "聯絡我"
+  },
+  "en": {
+    "title": "TeWei Ko | CS Student & AI Enthusiast",
+    "nav.about": "About", "nav.skills": "Skills", "nav.projects": "Projects", "nav.goals": "Goals", "nav.contact": "Contact",
+    "hero.title": "TeWei Ko", "hero.subtitle": "CS Student | AI & Quantum Computing Enthusiast",
+    "section.about": "About Me", "about.content": "I am a freshman CS student at STUST, aiming to transfer to a national university to further my studies in AI, HPC, and HCI.",
+    "section.skills": "Skills", "section.projects": "Projects", "project.calc": "Calculus practice & error management system (Flask + SQLite)", "project.reader": "Multimodal narrative experience system (Project H.O.L.O.)",
+    "section.goals": "Goals", "section.contact": "Contact Me"
+  }
+};
+
+function setLang(lang) {
+  localStorage.setItem('lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.innerText = messages[lang][key] || el.innerText;
+  });
+  if (lang === 'en') document.title = messages.en.title;
+  else document.title = messages['zh-TW'].title;
+}
+
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.onclick = () => {
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  document.documentElement.dataset.theme = isDark ? 'light' : 'dark';
+  themeToggle.innerText = isDark ? '🌙' : '☀️';
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+};
+
+const backToTop = document.getElementById('backToTop');
+window.onscroll = () => {
+  backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+};
+backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+// Init
+const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('zh') ? 'zh-TW' : 'en');
+setLang(savedLang);
+const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+document.documentElement.dataset.theme = savedTheme;
+themeToggle.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
+</script></body></html>
