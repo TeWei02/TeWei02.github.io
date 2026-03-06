@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-i18n="title">柯德瑋 (TeWei, Ko) | 資工學生與 AI 愛好者</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <style>
 :root { --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%); --card-bg: white; --text: #333; --sub-text: #666; --primary: #667eea; --secondary: #764ba2; --project-bg: #f8f9fa; }
 [data-theme="dark"] { --bg: #1a1a2e; --card-bg: #16213e; --text: #e94560; --sub-text: #95a5a6; --primary: #e94560; --secondary: #0f3460; --project-bg: #1f4068; }
@@ -22,6 +26,10 @@ h2 { font-size: 1.5rem; margin-bottom: 16px; color: var(--secondary); border-bot
 .contact { display: flex; gap: 16px; flex-wrap: wrap; }
 .contact a { padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 6px; }
 #backToTop { position: fixed; bottom: 30px; right: 30px; display: none; }
+header { display: flex; align-items: center; gap: 28px; margin-bottom: 8px; }
+.avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 20px rgba(0,0,0,0.2); flex-shrink: 0; }
+.header-text { display: flex; flex-direction: column; }
+@media (max-width: 480px) { header { flex-direction: column; align-items: flex-start; gap: 16px; } .avatar { width: 90px; height: 90px; } }
 </style>
 </head>
 <body>
@@ -39,8 +47,11 @@ h2 { font-size: 1.5rem; margin-bottom: 16px; color: var(--secondary); border-bot
 </nav>
 <div class="container">
 <header>
+<img class="avatar" src="https://github.com/user-attachments/assets/913373ee-4bc7-4954-80b3-c0bd5c5dcb5f" alt="TeWei Ko avatar">
+<div class="header-text">
 <h1 data-i18n="hero.title">柯德瑋 (TeWei, Ko)</h1>
 <p class="subtitle" data-i18n="hero.subtitle">資訊工程學生 | AI 與量子運算愛好者</p>
+</div>
 </header>
 <section id="about"><h2 data-i18n="section.about">關於我</h2><p data-i18n="about.content">我是南臺科技大學資訊工程系大一學生，目標透過轉學考進入國立大學，深造 AI、高效能運算與人機互動等領域。</p></section>
 <section id="skills"><h2 data-i18n="section.skills">技能</h2><ul data-i18n="skills.list"><li><b>程式語言：</b>C++, Python, Go, Java, C</li><li><b>開發工具：</b>Git, VS Code, Docker</li><li><b>興趣領域：</b>AI/ML, 量子運算, HPC, HCI</li></ul></section>
