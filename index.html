@@ -1,100 +1,327 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title data-i18n="title">柯德瑋 (TeWei, Ko) | 資工學生與 AI 愛好者</title>
-<style>
-:root { --bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%); --card-bg: white; --text: #333; --sub-text: #666; --primary: #667eea; --secondary: #764ba2; --project-bg: #f8f9fa; }
-[data-theme="dark"] { --bg: #1a1a2e; --card-bg: #16213e; --text: #e94560; --sub-text: #95a5a6; --primary: #e94560; --secondary: #0f3460; --project-bg: #1f4068; }
-* { margin: 0; padding: 0; box-sizing: border-box; transition: 0.3s; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); min-height: 100vh; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-.controls { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
-button { padding: 8px 12px; cursor: pointer; border-radius: 8px; border: none; background: var(--card-bg); color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-nav { background: var(--card-bg); padding: 10px 20px; border-radius: 30px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: sticky; top: 20px; z-index: 999; }
-nav a { text-decoration: none; color: var(--text); margin: 0 10px; font-weight: bold; }
-.container { max-width: 800px; background: var(--card-bg); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 48px; width: 100%; }
-h1 { font-size: 2.5rem; margin-bottom: 8px; color: var(--primary); }
-.subtitle { font-size: 1.2rem; color: var(--sub-text); margin-bottom: 32px; }
-section { margin-bottom: 40px; scroll-margin-top: 80px; }
-h2 { font-size: 1.5rem; margin-bottom: 16px; color: var(--secondary); border-bottom: 2px solid var(--primary); padding-bottom: 8px; }
-.project { background: var(--project-bg); padding: 20px; border-radius: 8px; margin-bottom: 16px; border-left: 4px solid var(--primary); }
-.contact { display: flex; gap: 16px; flex-wrap: wrap; }
-.contact a { padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 6px; }
-#backToTop { position: fixed; bottom: 30px; right: 30px; display: none; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Te-Wei Ko — AI + HCI Researcher exploring the essence of experience. Portfolio of projects in affective computing, cognitive science, and human-computer interaction.">
+    <title>Te-Wei Ko | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="controls">
-<button id="themeToggle">🌙</button>
-<button onclick="setLang('zh-TW')">繁中</button>
-<button onclick="setLang('en')">EN</button>
-</div>
-<nav>
-<a href="#about" data-i18n="nav.about">關於我</a>
-<a href="#skills" data-i18n="nav.skills">技能</a>
-<a href="#projects" data-i18n="nav.projects">專案</a>
-<a href="#goals" data-i18n="nav.goals">目標</a>
-<a href="#contact" data-i18n="nav.contact">聯絡我</a>
-</nav>
-<div class="container">
-<header>
-<h1 data-i18n="hero.title">柯德瑋 (TeWei, Ko)</h1>
-<p class="subtitle" data-i18n="hero.subtitle">資訊工程學生 | AI 與量子運算愛好者</p>
-</header>
-<section id="about"><h2 data-i18n="section.about">關於我</h2><p data-i18n="about.content">我是南臺科技大學資訊工程系大一學生，目標透過轉學考進入國立大學，深造 AI、高效能運算與人機互動等領域。</p></section>
-<section id="skills"><h2 data-i18n="section.skills">技能</h2><ul data-i18n="skills.list"><li><b>程式語言：</b>C++, Python, Go, Java, C</li><li><b>開發工具：</b>Git, VS Code, Docker</li><li><b>興趣領域：</b>AI/ML, 量子運算, HPC, HCI</li></ul></section>
-<section id="projects"><h2 data-i18n="section.projects">專案作品</h2><div class="project"><h3>📊 Calc Tracker</h3><p data-i18n="project.calc">微積分練習與錯題管理系統 (Flask + SQLite)</p><a href="https://github.com/TeWei02/calc-tracker" target="_blank">View Project ↗</a></div><div class="project"><h3>📖 AI-Reader</h3><p data-i18n="project.reader">多模態敘事體驗系統 (Project H.O.L.O.)</p><a href="https://github.com/TeWei02/AI-Reader" target="_blank">View Project ↗</a></div></section>
-<section id="goals"><h2 data-i18n="section.goals">目標</h2><ul data-i18n="goals.list"><li>2026 年：進入國立大學資工系</li><li>深化 AI 與量子運算能力</li><li>參與國際交流與研究計畫</li></ul></section>
-<section id="contact"><h2 data-i18n="section.contact">聯絡我</h2><div class="contact"><a href="https://github.com/TeWei02">GitHub</a><a href="mailto:i910418@icloud.com">Email</a></div></section>
-</div>
-<button id="backToTop">↑</button>
-<script>
-const messages = {
-  "zh-TW": {
-    "title": "柯德瑋 (TeWei, Ko) | 資工學生與 AI 愛好者",
-    "nav.about": "關於我", "nav.skills": "技能", "nav.projects": "專案", "nav.goals": "目標", "nav.contact": "聯絡我",
-    "hero.title": "柯德瑋 (TeWei, Ko)", "hero.subtitle": "資訊工程學生 | AI 與量子運算愛好者",
-    "section.about": "關於我", "about.content": "我是南臺科技大學資訊工程系大一學生，目標透過轉學考進入國立大學，深造 AI、高效能運算與人機互動等領域。",
-    "section.skills": "技能", "section.projects": "專案作品", "project.calc": "微積分練習與錯題管理系統 (Flask + SQLite)", "project.reader": "多模態敘事體驗系統 (Project H.O.L.O.)",
-    "section.goals": "目標", "section.contact": "聯絡我"
-  },
-  "en": {
-    "title": "TeWei Ko | CS Student & AI Enthusiast",
-    "nav.about": "About", "nav.skills": "Skills", "nav.projects": "Projects", "nav.goals": "Goals", "nav.contact": "Contact",
-    "hero.title": "TeWei Ko", "hero.subtitle": "CS Student | AI & Quantum Computing Enthusiast",
-    "section.about": "About Me", "about.content": "I am a freshman CS student at STUST, aiming to transfer to a national university to further my studies in AI, HPC, and HCI.",
-    "section.skills": "Skills", "section.projects": "Projects", "project.calc": "Calculus practice & error management system (Flask + SQLite)", "project.reader": "Multimodal narrative experience system (Project H.O.L.O.)",
-    "section.goals": "Goals", "section.contact": "Contact Me"
-  }
-};
-function setLang(lang) {
-  localStorage.setItem('lang', lang);
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    el.innerText = messages[lang][key] || el.innerText;
-  });
-  if (lang === 'en') document.title = messages.en.title;
-  else document.title = messages['zh-TW'].title;
-}
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.onclick = () => {
-  const isDark = document.documentElement.dataset.theme === 'dark';
-  document.documentElement.dataset.theme = isDark ? 'light' : 'dark';
-  themeToggle.innerText = isDark ? '🌙' : '☀️';
-  localStorage.setItem('theme', isDark ? 'light' : 'dark');
-};
-const backToTop = document.getElementById('backToTop');
-window.onscroll = () => {
-  backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-};
-backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-// Init
-const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('zh') ? 'zh-TW' : 'en');
-setLang(savedLang);
-const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-document.documentElement.dataset.theme = savedTheme;
-themeToggle.innerText = savedTheme === 'dark' ? '☀️' : '🌙';
-</script>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">TW<span class="nav-logo-dot">.</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="section hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-avatar-wrapper">
+                <div class="hero-avatar-ring"></div>
+                <img class="hero-avatar" src="https://avatars.githubusercontent.com/u/229563995?s=256&v=4" alt="Te-Wei Ko">
+            </div>
+            <h1 class="hero-name reveal">Te-Wei Ko</h1>
+            <p class="hero-tagline reveal">AI + HCI Researcher</p>
+            <p class="hero-subtitle reveal">Exploring the Essence of Experience</p>
+            <p class="hero-bio reveal">Bridging artificial intelligence, affective computing, and cognitive science to reimagine how humans interact with information.</p>
+            <div class="hero-links reveal">
+                <a href="https://github.com/TeWei02" target="_blank" rel="noopener" class="hero-link" aria-label="GitHub">
+                    <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    GitHub
+                </a>
+                <a href="https://orcid.org/0009-0003-1348-3558" target="_blank" rel="noopener" class="hero-link" aria-label="ORCID">
+                    <svg class="hero-link-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-3.994-3.722h-2.325z"/></svg>
+                    ORCID
+                </a>
+                <a href="mailto:tewei.ko0418@gmail.com" class="hero-link" aria-label="Email">
+                    <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Email
+                </a>
+            </div>
+        </div>
+        <a href="#about" class="hero-scroll-indicator" aria-label="Scroll down">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title reveal">About</h2>
+            <div class="about-grid">
+                <div class="about-card reveal">
+                    <div class="about-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/><path d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+                    </div>
+                    <h3>Education</h3>
+                    <p>B.S. in Computer Science &amp; Information Engineering</p>
+                    <p class="about-card-sub">Southern Taiwan University of Science and Technology (STUST), 2025–Present</p>
+                </div>
+                <div class="about-card reveal">
+                    <div class="about-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>Focus</h3>
+                    <p>AI / Affective Computing / HCI / Cognitive Science</p>
+                    <p class="about-card-sub">Exploring the intersection of human perception, emotion, and intelligent systems</p>
+                </div>
+                <div class="about-card reveal">
+                    <div class="about-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <h3>Mission</h3>
+                    <p>Breaking the boundaries of text-based media</p>
+                    <p class="about-card-sub">Using AI to unlock the full spectrum of human perception for narrative experiences</p>
+                </div>
+            </div>
+            <div class="about-text reveal">
+                <p>I'm Te-Wei Ko, a freshman at STUST's Computer Science department with an unconventional background spanning semiconductor engineering and philosophy. My work sits at the intersection of artificial intelligence, human-computer interaction, and cognitive science — driven by a conviction that technology should adapt to human cognition, not the other way around.</p>
+                <p>My core project, ModernReader, applies a Cognitive Rhythm Alignment (CRA) model to dynamically tune reading interfaces to the user's real-time cognitive state. I also build tools like Sensory Shield to reduce digital noise for neurodiverse users, and Project H.O.L.O., an AI framework that reimagines storytelling beyond the constraints of text.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <h2 class="section-title reveal">Projects</h2>
+            <div class="projects-grid">
+                <!-- ModernReader -->
+                <div class="project-card reveal">
+                    <div class="project-card-content">
+                        <div class="project-badge">Core Project</div>
+                        <h3 class="project-title">ModernReader</h3>
+                        <p class="project-desc">AI-powered reading assistance platform built on the Cognitive Rhythm Alignment (CRA) model. Tracks scrolling behavior, reading speed, and attention metrics in real-time to dynamically adapt content presentation — reducing cognitive load and improving comprehension.</p>
+                        <div class="project-stats">
+                            <span class="project-stat">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                2026 海峡两岸创业大赛决赛入围
+                            </span>
+                            <span class="project-stat">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                                24-subject within-subject experiment
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-card-glow"></div>
+                </div>
+
+                <!-- Sensory Shield -->
+                <div class="project-card reveal">
+                    <div class="project-card-content">
+                        <div class="project-badge">Chrome Extension</div>
+                        <h3 class="project-title">Sensory Shield</h3>
+                        <p class="project-desc">A Chrome extension designed to reduce visual noise on web pages, serving neurodiverse users with sensory sensitivity. Intelligently filters distracting elements while preserving core content structure and readability.</p>
+                        <div class="project-tags">
+                            <span>Accessibility</span><span>Neurodiversity</span><span>Web Filtering</span><span>UX</span>
+                        </div>
+                    </div>
+                    <div class="project-card-glow"></div>
+                </div>
+
+                <!-- AI-Reader / Project H.O.L.O. -->
+                <div class="project-card reveal">
+                    <div class="project-card-content">
+                        <div class="project-badge">AI Framework</div>
+                        <h3 class="project-title">AI-Reader <span class="project-subtitle">(Project H.O.L.O.)</span></h3>
+                        <p class="project-desc">An ambitious AI framework that deconstructs text through deep semantic analysis, then reconstructs narrative through generative AI to engage the full spectrum of human perception — visual, auditory, and beyond. Breaking the centuries-old constraint of text-as-medium for storytelling.</p>
+                        <div class="project-tags">
+                            <span>NLP</span><span>Generative AI</span><span>Multimodal</span><span>Semantic Analysis</span>
+                        </div>
+                    </div>
+                    <div class="project-card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <h2 class="section-title reveal">Skills &amp; Expertise</h2>
+            <div class="skills-cloud reveal">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">CUDA</span>
+                <span class="skill-tag">HPC</span>
+                <span class="skill-tag">NLP</span>
+                <span class="skill-tag">LLM</span>
+                <span class="skill-tag">Deep Learning</span>
+                <span class="skill-tag">Cognitive Modeling</span>
+                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">C / C++</span>
+                <span class="skill-tag">Linux / UNIX</span>
+                <span class="skill-tag">Embedded Systems</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">Game Theory</span>
+                <span class="skill-tag">Graph Theory</span>
+                <span class="skill-tag">Robotics & SLAM</span>
+                <span class="skill-tag">Cybersecurity</span>
+                <span class="skill-tag">AutoCAD</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <h2 class="section-title reveal">Experience</h2>
+            <div class="timeline">
+                <!-- Education -->
+                <div class="timeline-category reveal">
+                    <h3 class="timeline-category-title">Education</h3>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2025 – Present</span>
+                        <h4>B.S. Computer Science &amp; Information Engineering</h4>
+                        <p>Southern Taiwan University of Science and Technology (STUST)</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2017 – 2022</span>
+                        <h4>Mechanical Drafting</h4>
+                        <p>National Tainan Industrial Vocational High School</p>
+                    </div>
+                </div>
+
+                <!-- Internship -->
+                <div class="timeline-category reveal">
+                    <h3 class="timeline-category-title">Internship</h3>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022</span>
+                        <h4>Semiconductor Engineering Intern</h4>
+                        <p>TSMC Contractor — Rotated through process, equipment, and quality departments, gaining hands-on exposure to front-end semiconductor manufacturing (lithography, etching, deposition).</p>
+                    </div>
+                </div>
+
+                <!-- Awards -->
+                <div class="timeline-category reveal">
+                    <h3 class="timeline-category-title">Awards &amp; Achievements</h3>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot timeline-dot-accent"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2026</span>
+                        <h4>海峡两岸青年创新创业大赛 — Finalist</h4>
+                        <p>ModernReader project passed preliminary review, advancing to final judging round</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot timeline-dot-accent"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2026</span>
+                        <h4>Young飞 Global Action Program — Selected</h4>
+                        <p>Ministry of Education Youth Development Administration — Carbon-negative agriculture team</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot timeline-dot-accent"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2026</span>
+                        <h4>11th STUST Literature Award — Honorable Mention</h4>
+                        <p>Short story category: "游标闪烁之间" (Between the Blinking Cursor)</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2026</span>
+                        <h4>HPC x AI 2026 Winter Camp</h4>
+                        <p>Certificate of completion — National Center for High-Performance Computing (NCHC)</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024</span>
+                        <h4>Semiconductor Process &amp; Data Analysis Certificate</h4>
+                        <p>NYCU Laser System Research Center</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title reveal">Contact</h2>
+            <div class="contact-wrapper reveal">
+                <div class="contact-info">
+                    <p class="contact-intro">Interested in collaboration, research discussion, or just want to say hello? Reach out anytime.</p>
+                    <div class="contact-methods">
+                        <a href="mailto:tewei.ko0418@gmail.com" class="contact-method">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <span>tewei.ko0418@gmail.com</span>
+                        </a>
+                        <a href="https://github.com/TeWei02" target="_blank" rel="noopener" class="contact-method">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            <span>github.com/TeWei02</span>
+                        </a>
+                        <a href="https://orcid.org/0009-0003-1348-3558" target="_blank" rel="noopener" class="contact-method">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-3.994-3.722h-2.325z"/></svg>
+                            <span>ORCID: 0009-0003-1348-3558</span>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" action="#" method="post">
+                    <div class="form-group">
+                        <input type="text" id="name" class="form-input" placeholder=" " required>
+                        <label for="name" class="form-label">Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-input" placeholder=" " required>
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" class="form-input form-textarea" rows="5" placeholder=" " required></textarea>
+                        <label for="message" class="form-label">Message</label>
+                    </div>
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <p>&copy; 2026 Te-Wei Ko. Built with curiosity.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/TeWei02" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://orcid.org/0009-0003-1348-3558" target="_blank" rel="noopener">ORCID</a>
+                    <a href="mailto:tewei.ko0418@gmail.com">Email</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
