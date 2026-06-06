@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Universal Semantic Glyphs — ModernReader Labs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Inter','Noto Sans TC',sans-serif;
+    background:#08080f;
+    color:#e0e0e0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  header {
+    text-align:center;
+    padding:40px 20px 20px;
+  }
+
+  header h1 {
+    font-size:2rem;
+    font-weight:600;
+    background:linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    margin-bottom:8px;
+  }
+
+  header p {
+    color:#64748b;
+    font-size:0.9rem;
+    max-width:560px;
+    line-height:1.6;
+  }
+
+  .input-area {
+    width:100%;
+    max-width:680px;
+    padding:0 20px;
+  }
+
+  textarea {
+    width:100%;
+    height:100px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:16px;
+    color:#e0e0e0;
+    font-family:inherit;
+    font-size:1.1rem;
+    resize:none;
+    outline:none;
+    transition:border-color 0.3s;
+    line-height:1.6;
+  }
+
+  textarea:focus {
+    border-color:rgba(129,140,248,0.5);
+  }
+
+  .controls {
+    display:flex;
+    gap:12px;
+    margin-top:12px;
+    flex-wrap:wrap;
+  }
+
+  .control-btn {
+    padding:8px 20px;
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:25px;
+    background:rgba(255,255,255,0.03);
+    color:#aaa;
+    font-family:inherit;
+    font-size:0.85rem;
+    cursor:pointer;
+    transition:all 0.3s;
+  }
+
+  .control-btn:hover {
+    background:rgba(255,255,255,0.08);
+    color:#ddd;
+  }
+
+  .control-btn.active {
+    background:rgba(129,140,248,0.2);
+    border-color:rgba(129,140,248,0.5);
+    color:#a5b4fc;
+  }
+
+  .canvas-wrap {
+    margin:20px;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.06);
+    background:rgba(10,10,20,0.6);
+  }
+
+  canvas {
+    display:block;
+  }
+
+  .glyph-grid {
+    display:none;
+    grid-template-columns:repeat(auto-fill, minmax(120px, 1fr));
+    gap:20px;
+    padding:20px;
+    max-width:900px;
+    width:100%;
+  }
+
+  .glyph-grid.visible { display:grid; }
+
+  .glyph-cell {
+    text-align:center;
+    background:rgba(255,255,255,0.03);
+    border-radius:16px;
+    padding:12px 8px;
+    border:1px solid rgba(255,255,255,0.05);
+  }
+
+  .glyph-cell canvas {
+    border-radius:8px;
+  }
+
+  .glyph-cell .word {
+    font-size:0.8rem;
+    color:#8892b0;
+    margin-top:8px;
+    word-break:break-all;
+  }
+
+  .legend {
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:10px 20px;
+    font-size:0.75rem;
+    color:#64748b;
+  }
+
+  .legend span {
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  .legend .dot {
+    width:10px;
+    height:10px;
+    border-radius:50%;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Universal Semantic Glyphs</h1>
+  <p>輸入任意語言文字，每個語義單元自動轉化為獨特的幾何圖形符號。同一概念在不同語言中產生視覺上相似的圖形——幾何即語言。</p>
+</header>
+
+<div class="input-area">
+  <textarea id="text-input" placeholder="用任何語言輸入文字... &#10;Write in any language...&#10;どの言語でも入力してください...&#10;아무 언어로 입력하세요...&#10;أي لغة...">你好世界。Hello World. こんにちは世界。Bonjour le monde.</textarea>
+  <div class="controls">
+    <button class="control-btn active" onclick="setView('unified')">統一圖形</button>
+    <button class="control-btn" onclick="setView('grid')">分詞圖網格</button>
+    <button class="control-btn" onclick="setView('density')">語義密度圖</button>
+    <button class="control-btn" id="randomize-btn" onclick="randomize()">隨機文字</button>
+  </div>
+</div>
+
+<div class="legend">
+  <span><span class="dot" style="background:#f472b6"></span> 情感/情緒</span>
+  <span><span class="dot" style="background:#818cf8"></span> 自然/物體</span>
+  <span><span class="dot" style="background:#34d399"></span> 動作/動態</span>
+  <span><span class="dot" style="background:#fbbf24"></span> 抽象/概念</span>
+  <span><span class="dot" style="background:#f87171"></span> 連接/結構</span>
+</div>
+
+<div class="canvas-wrap">
+  <canvas id="main-canvas" width="680" height="520"></canvas>
+</div>
+
+<div class="glyph-grid" id="glyph-grid"></div>
+
+<script>
+// --- Semantic Encoding Engine ---
+// Maps any Unicode text → geometric glyph primitives
+
+const CATEGORY_COLORS = {
+  emotion: '#f472b6',
+  nature: '#818cf8',
+  action: '#34d399',
+  abstract: '#fbbf24',
+  structural: '#f87171'
+};
+
+// Language family → shape bias
+const LANG_SHAPES = {
+  cjk: { shape:'circle', density:0.7 },
+  latin: { shape:'rect', density:0.5 },
+  arabic: { shape:'curve', density:0.6 },
+  devanagari: { shape:'triangle', density:0.65 },
+  default: { shape:'hexagon', density:0.55 }
+};
+
+function detectScript(char) {
+  const cp = char.codePointAt(0);
+  if((cp >= 0x4E00 && cp <= 0x9FFF) || (cp >= 0x3400 && cp <= 0x4DBF) ||
+     (cp >= 0x3040 && cp <= 0x309F) || (cp >= 0x30A0 && cp <= 0x30FF) ||
+     (cp >= 0xAC00 && cp <= 0xD7AF)) return 'cjk';
+  if((cp >= 0x0600 && cp <= 0x06FF) || (cp >= 0x0750 && cp <= 0x077F)) return 'arabic';
+  if(cp >= 0x0900 && cp <= 0x097F) return 'devanagari';
+  if((cp >= 0x0041 && cp <= 0x005A) || (cp >= 0x0061 && cp <= 0x007A) ||
+     (cp >= 0x00C0 && cp <= 0x024F)) return 'latin';
+  return 'default';
+}
+
+// Simple semantic hashing: character → stable feature vector
+function charToFeatures(char) {
+  const cp = char.codePointAt(0);
+  const script = detectScript(char);
+
+  // Pseudo-random but deterministic from codepoint
+  let h = 0;
+  const s = String(cp);
+  for(let i=0;i<s.length;i++) h = ((h<<5)-h)+s.charCodeAt(i);
+
+  return {
+    hue: Math.abs(h*137) % 360,
+    radius: 15 + Math.abs(h*251) % 25,
+    rotation: Math.abs(h*73) % 360,
+    sides: 3 + Math.abs(h*41) % 5,
+    opacity: 0.5 + (Math.abs(h*17)%50)/100,
+    category: Object.keys(CATEGORY_COLORS)[Math.abs(h*31) % 5],
+    script
+  };
+}
+
+// Word-level semantic encoding (enhanced)
+const SEMANTIC_BASE = {
+  // Emotional words → pink tones
+  'love':{hue:340, shape:'heart', size:1.3}, 'peace':{hue:330, shape:'circle', size:1.2},
+  'happy':{hue:20, shape:'star', size:1.1}, 'sad':{hue:240, shape:'drop', size:0.9},
+  '你好':{hue:30, shape:'circle', size:1.1}, '世界':{hue:200, shape:'hexagon', size:1.2},
+  '愛':{hue:340, shape:'heart', size:1.3}, '平和':{hue:320, shape:'circle', size:1.2},
+  'こんにちは':{hue:40, shape:'star', size:1.1}, '世界':{hue:210, shape:'hexagon', size:1.2},
+  'Bonjour':{hue:35, shape:'star', size:1.1}, 'monde':{hue:205, shape:'hexagon', size:1.15},
+  'Hello':{hue:25, shape:'star', size:1.05}, 'World':{hue:195, shape:'hexagon', size:1.2},
+};
+
+function wordToFeatures(word) {
+  const lw = word.toLowerCase().replace(/[^a-z\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/g, '');
+  if(SEMANTIC_BASE[lw]) return { ...SEMANTIC_BASE[lw], fromBase: true };
+
+  // Hash-based fallback
+  let h=0;
+  for(let i=0;i<word.length;i++) h = ((h<<5)-h)+word.charCodeAt(i);
+
+  const shapes = ['circle','hexagon','triangle','rect','diamond','pentagon'];
+  return {
+    hue: Math.abs(h*137) % 360,
+    shape: shapes[Math.abs(h*53) % shapes.length],
+    size: 0.7 + (Math.abs(h*29)%60)/100,
+    radius: 18 + Math.abs(h*41)%18,
+    sides: 3 + Math.abs(h*17)%5,
+    density: 0.4 + (Math.abs(h*11)%40)/100,
+    category: Object.keys(CATEGORY_COLORS)[Math.abs(h*31) % 5]
+  };
+}
+
+// --- Rendering ---
+
+const canvas = document.getElementById('main-canvas');
+const ctx = canvas.getContext('2d');
+let currentView = 'unified';
+
+// Shape drawing functions
+function drawShape(ctx, x, y, features) {
+  const { hue, radius, sides, opacity, shape, size } = features;
+  const r = (radius || 22) * (size || 1);
+  const category = features.category || 'abstract';
+  const color = CATEGORY_COLORS[category] || `hsl(${hue}, 70%, 60%)`;
+
+  ctx.save();
+  ctx.globalAlpha = opacity || 0.75;
+  ctx.fillStyle = color;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.5;
+
+  const s = shape || 'circle';
+
+  if(s === 'heart') {
+    ctx.beginPath();
+    ctx.moveTo(x, y + r*0.3);
+    ctx.bezierCurveTo(x, y - r*0.6, x - r, y - r*0.3, x - r*0.5, y + r*0.2);
+    ctx.bezierCurveTo(x - r*0.5, y + r*0.4, x, y + r*0.6, x, y + r*0.8);
+    ctx.bezierCurveTo(x, y + r*0.6, x + r*0.5, y + r*0.4, x + r*0.5, y + r*0.2);
+    ctx.bezierCurveTo(x + r, y - r*0.3, x, y - r*0.6, x, y + r*0.3);
+    ctx.fill();
+  } else if(s === 'star') {
+    const spikes = 5;
+    const outerR = r;
+    const innerR = r*0.45;
+    ctx.beginPath();
+    for(let i=0;i<spikes*2;i++) {
+      const rad = i*Math.PI/spikes - Math.PI/2;
+      const cr = i%2===0 ? outerR : innerR;
+      ctx.lineTo(x+Math.cos(rad)*cr, y+Math.sin(rad)*cr);
+    }
+    ctx.closePath();
+    ctx.fill();
+  } else if(s === 'drop') {
+    ctx.beginPath();
+    ctx.moveTo(x, y - r);
+    ctx.bezierCurveTo(x - r, y - r*0.3, x - r, y + r*0.6, x, y + r);
+    ctx.bezierCurveTo(x + r, y + r*0.6, x + r, y - r*0.3, x, y - r);
+    ctx.fill();
+  } else if(s === 'triangle') {
+    ctx.beginPath();
+    for(let i=0;i<3;i++) {
+      const angle = i*Math.PI*2/3 - Math.PI/2;
+      ctx.lineTo(x+Math.cos(angle)*r, y+Math.sin(angle)*r);
+    }
+    ctx.closePath();
+    ctx.fill();
+  } else if(s === 'diamond') {
+    ctx.beginPath();
+    ctx.moveTo(x, y-r);
+    ctx.lineTo(x+r*0.7, y);
+    ctx.lineTo(x, y+r);
+    ctx.lineTo(x-r*0.7, y);
+    ctx.closePath();
+    ctx.fill();
+  } else if(s === 'pentagon') {
+    ctx.beginPath();
+    for(let i=0;i<5;i++) {
+      const angle = i*Math.PI*2/5 - Math.PI/2;
+      ctx.lineTo(x+Math.cos(angle)*r, y+Math.sin(angle)*r);
+    }
+    ctx.closePath();
+    ctx.fill();
+  } else if(s === 'curve') {
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI*1.3);
+    ctx.stroke();
+    // Secondary arc
+    ctx.beginPath();
+    ctx.arc(x, y, r*0.7, Math.PI*0.8, Math.PI*2);
+    ctx.stroke();
+  } else if(s === 'rect') {
+    ctx.fillRect(x-r*0.7, y-r*0.7, r*1.4, r*1.4);
+  } else {
+    // Circle
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI*2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+function drawConnections(ctx, positions, features) {
+  ctx.save();
+  ctx.globalAlpha = 0.15;
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 0.8;
+
+  for(let i=0;i<positions.length;i++) {
+    for(let j=i+1;j<positions.length;j++) {
+      const dx = positions[i].x - positions[j].x;
+      const dy = positions[i].y - positions[j].y;
+      const dist = Math.sqrt(dx*dx+dy*dy);
+      if(dist < 160) {
+        ctx.beginPath();
+        ctx.moveTo(positions[i].x, positions[i].y);
+        ctx.lineTo(positions[j].x, positions[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  ctx.restore();
+}
+
+// Unified view: all glyphs in one canvas, arranged by force-like layout
+function renderUnified() {
+  const text = document.getElementById('text-input').value.trim();
+  if(!text) return;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Background grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.02)';
+  ctx.lineWidth = 0.5;
+  for(let x=0;x<canvas.width;x+=40) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,canvas.height); ctx.stroke(); }
+  for(let y=0;y<canvas.height;y+=40) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke(); }
+
+  // Tokenize: split by spaces and CJK chars
+  const tokens = [];
+  const rawTokens = text.split(/\s+/);
+  rawTokens.forEach(token => {
+    // Split CJK characters individually
+    let i=0;
+    while(i < token.length) {
+      const cp = token.codePointAt(i);
+      if((cp >= 0x4E00 && cp <= 0x9FFF) || (cp >= 0x3400 && cp <= 0x4DBF) ||
+         (cp >= 0x3040 && cp <= 0x309F) || (cp >= 0x30A0 && cp <= 0x30FF) ||
+         (cp >= 0xAC00 && cp <= 0xD7AF)) {
+        tokens.push(token.charAt(i));
+        i++;
+      } else {
+        let end = i+1;
+        while(end < token.length) {
+          const cp2 = token.codePointAt(end);
+          if((cp2 >= 0x4E00 && cp2 <= 0x9FFF) || (cp2 >= 0x3040 && cp2 <= 0x309F) ||
+             (cp2 >= 0x30A0 && cp2 <= 0x30FF)) break;
+          end++;
+        }
+        tokens.push(token.slice(i, end));
+        i = end;
+      }
+    }
+  });
+
+  if(tokens.length === 0) return;
+
+  // Spiral layout
+  const cx = canvas.width/2;
+  const cy = canvas.height/2;
+  const maxR = Math.min(cx, cy) - 40;
+  const features = tokens.map(w => wordToFeatures(w));
+  const positions = [];
+
+  let r = 20, angle = 0;
+  const spacing = Math.min(70, maxR * 2 / Math.sqrt(tokens.length));
+
+  tokens.forEach((token, i) => {
+    const f = features[i];
+    r = 30 + (i / tokens.length) * (maxR - 30) * 0.85;
+    angle = i * 2.4; // golden angle-ish
+
+    const x = cx + Math.cos(angle) * r * 0.8;
+    const y = cy + Math.sin(angle) * r * 0.65;
+
+    positions.push({ x, y });
+
+    // Central glow for important tokens
+    if(i < 3 && f.fromBase) {
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, (f.radius||22)*1.5);
+      grad.addColorStop(0, `hsla(${f.hue}, 70%, 60%, 0.15)`);
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.fillRect(x-60, y-60, 120, 120);
+    }
+
+    drawShape(ctx, x, y, f);
+  });
+
+  drawConnections(ctx, positions, features);
+
+  // Title
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '12px Inter, Noto Sans TC';
+  ctx.textAlign = 'center';
+  ctx.fillText(`${tokens.length} 個語義單元 · ${detectScript(text[0])} 腳本系統`, cx, canvas.height-20);
+}
+
+// Grid view: per-word glyph cards
+function renderGrid() {
+  const text = document.getElementById('text-input').value.trim();
+  if(!text) return;
+
+  const grid = document.getElementById('glyph-grid');
+  grid.innerHTML = '';
+
+  const tokens = text.split(/\s+/).flatMap(token => {
+    const res = [];
+    let i=0;
+    while(i < token.length) {
+      const cp = token.codePointAt(i);
+      if((cp >= 0x4E00 && cp <= 0x9FFF) || (cp >= 0x3040 && cp <= 0x309F) ||
+         (cp >= 0x30A0 && cp <= 0x30FF) || (cp >= 0xAC00 && cp <= 0xD7AF)) {
+        res.push(token.charAt(i)); i++;
+      } else {
+        let e = i+1;
+        while(e < token.length && !(
+          (token.codePointAt(e) >= 0x4E00 && token.codePointAt(e) <= 0x9FFF) ||
+          (token.codePointAt(e) >= 0x3040 && token.codePointAt(e) <= 0x30FF)
+        )) e++;
+        res.push(token.slice(i, e)); i = e;
+      }
+    }
+    return res;
+  });
+
+  tokens.forEach(token => {
+    const cell = document.createElement('div');
+    cell.className = 'glyph-cell';
+
+    const miniCanvas = document.createElement('canvas');
+    miniCanvas.width = 100;
+    miniCanvas.height = 100;
+    const mctx = miniCanvas.getContext('2d');
+
+    const f = wordToFeatures(token);
+    f.radius = 30;
+    f.opacity = 0.8;
+
+    drawShape(mctx, 50, 50, f);
+
+    const wordEl = document.createElement('div');
+    wordEl.className = 'word';
+    wordEl.textContent = token;
+
+    cell.appendChild(miniCanvas);
+    cell.appendChild(wordEl);
+    grid.appendChild(cell);
+  });
+}
+
+// Density view: semantic density heatmap
+function renderDensity() {
+  const text = document.getElementById('text-input').value.trim();
+  if(!text) return;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Background
+  ctx.fillStyle = '#0a0a14';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  const tokens = [];
+  const chars = [...text];
+  chars.forEach(ch => {
+    if(/\S/.test(ch)) tokens.push(ch);
+  });
+
+  const cols = 20;
+  const rows = Math.ceil(tokens.length / cols);
+  const cellW = canvas.width / cols;
+  const cellH = Math.min(60, (canvas.height - 40) / Math.max(rows, 8));
+
+  const startY = (canvas.height - rows * cellH) / 2;
+
+  tokens.forEach((ch, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = col * cellW + cellW/2;
+    const y = startY + row * cellH + cellH/2;
+
+    const f = charToFeatures(ch);
+    const r = Math.min(cellW, cellH) * 0.35 * (0.5 + f.opacity);
+
+    // Density glow
+    const grad = ctx.createRadialGradient(x, y, 0, x, y, r*2);
+    grad.addColorStop(0, CATEGORY_COLORS[f.category]);
+    grad.addColorStop(0.3, `${CATEGORY_COLORS[f.category]}88`);
+    grad.addColorStop(1, 'transparent');
+    ctx.fillStyle = grad;
+    ctx.fillRect(x-r*2, y-r*2, r*4, r*4);
+
+    // Glyph
+    ctx.save();
+    ctx.globalAlpha = 0.9;
+    ctx.fillStyle = CATEGORY_COLORS[f.category];
+    ctx.beginPath();
+    const sides = f.sides;
+    for(let j=0;j<sides;j++) {
+      const a = j*Math.PI*2/sides - Math.PI/2 + f.rotation*Math.PI/180;
+      ctx.lineTo(x+Math.cos(a)*r*0.7, y+Math.sin(a)*r*0.7);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  });
+
+  // Legend
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.font = '11px Inter';
+  ctx.textAlign = 'right';
+  ctx.fillText(`${tokens.length} chars · density map`, canvas.width-20, canvas.height-10);
+}
+
+function render() {
+  document.getElementById('glyph-grid').classList.remove('visible');
+  canvas.style.display = 'block';
+
+  if(currentView === 'unified') renderUnified();
+  else if(currentView === 'grid') {
+    canvas.style.display = 'none';
+    document.getElementById('glyph-grid').classList.add('visible');
+    renderGrid();
+  }
+  else if(currentView === 'density') renderDensity();
+}
+
+function setView(view) {
+  currentView = view;
+  document.querySelectorAll('.control-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.control-btn').forEach(b => {
+    if((view==='unified' && b.textContent.includes('統一')) ||
+       (view==='grid' && b.textContent.includes('分詞')) ||
+       (view==='density' && b.textContent.includes('密度'))) {
+      b.classList.add('active');
+    }
+  });
+  render();
+}
+
+function randomize() {
+  const samples = [
+    '森林 海洋 天空 大地 火焰 微風 星辰',
+    'love peace harmony chaos order entropy',
+    '愛 平和 調和 混沌 秩序 エントロピー',
+    'Algorithm Consciousness Quantum Reality',
+    '夢 時間 記憶 宇宙 光 闇 音 詩',
+    'Symphony of neural pathways across dimensions'
+  ];
+  document.getElementById('text-input').value = samples[Math.floor(Math.random()*samples.length)];
+  render();
+}
+
+document.getElementById('text-input').addEventListener('input', () => {
+  clearTimeout(window._renderTimeout);
+  window._renderTimeout = setTimeout(render, 300);
+});
+
+// Init
+render();
+</script>
+
+</body>
+</html>
