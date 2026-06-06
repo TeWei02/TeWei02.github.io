@@ -1,314 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Te-Wei Ko — AI + HCI Researcher exploring the essence of experience. Portfolio of projects in affective computing, cognitive science, and human-computer interaction.">
-    <title>Te-Wei Ko | Portfolio</title>
+    <meta name="description" content="柯德瑋 Te-Wei Ko — 探索「體驗」本質的資工學者。情感運算、生成式 AI、互動設計、Project H.O.L.O.">
+    <title>柯德瑋 Te-Wei Ko</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="nav" id="nav">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">TW<span class="nav-logo-dot">.</span></a>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">TW</a>
+            <div class="nav-links" id="nav-links">
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span>
             </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="section hero" id="hero">
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
         <div class="hero-bg"></div>
-        <div class="container hero-content">
-            <div class="hero-avatar-wrapper">
-                <div class="hero-avatar-ring"></div>
-                <img class="hero-avatar" src="https://avatars.githubusercontent.com/u/229563995?s=256&v=4" alt="Te-Wei Ko">
+        <div class="hero-content">
+            <div class="hero-avatar-wrap reveal">
+                <div class="hero-avatar-glow"></div>
+                <img class="hero-avatar" src="https://avatars.githubusercontent.com/u/229563995?s=256&v=4" alt="柯德瑋" loading="eager">
             </div>
-            <h1 class="hero-name reveal">Te-Wei Ko</h1>
-            <p class="hero-tagline reveal">AI + HCI Researcher</p>
-            <p class="hero-subtitle reveal">Exploring the Essence of Experience</p>
-            <p class="hero-bio reveal">Bridging artificial intelligence, affective computing, and cognitive science to reimagine how humans interact with information.</p>
-            <div class="hero-links reveal">
-                <a href="https://github.com/TeWei02" target="_blank" rel="noopener" class="hero-link" aria-label="GitHub">
-                    <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <h1 class="hero-name reveal">柯德瑋<span class="hero-name-en">Te-Wei Ko</span></h1>
+            <div class="hero-tagline-wrap reveal">
+                <p class="hero-tagline">如果故事不再需要「閱讀」，<br>而是能被<span class="hero-tagline-accent">「感受」</span>？</p>
+                <p class="hero-tagline-en">What if stories weren't read — but <span class="hero-tagline-accent-en">felt</span>?</p>
+            </div>
+            <p class="hero-bio reveal">探索「體驗」本質的資工學者 &nbsp;/&nbsp; 南臺科技大學<br>情感運算 &times; 生成式 AI &times; 互動設計</p>
+            <div class="hero-cta reveal">
+                <a href="https://github.com/TeWei02" target="_blank" rel="noopener" class="hero-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     GitHub
                 </a>
-                <a href="https://orcid.org/0009-0003-1348-3558" target="_blank" rel="noopener" class="hero-link" aria-label="ORCID">
-                    <svg class="hero-link-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-3.994-3.722h-2.325z"/></svg>
+                <a href="https://orcid.org/0009-0003-1348-3558" target="_blank" rel="noopener" class="hero-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-3.994-3.722h-2.325z"/></svg>
                     ORCID
                 </a>
-                <a href="mailto:tewei.ko0418@gmail.com" class="hero-link" aria-label="Email">
-                    <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <a href="mailto:tewei.ko0418@gmail.com" class="hero-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
                     Email
                 </a>
             </div>
         </div>
-        <a href="#about" class="hero-scroll-indicator" aria-label="Scroll down">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
-        </a>
+        <div class="hero-scroll" aria-hidden="true">
+            <span></span>
+        </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section about" id="about">
+    <!-- ==================== RESEARCH ==================== -->
+    <section class="section research" id="research">
         <div class="container">
-            <h2 class="section-title reveal">About</h2>
-            <div class="about-grid">
-                <div class="about-card reveal">
-                    <div class="about-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/><path d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+            <div class="section-label reveal">Research Themes</div>
+            <h2 class="section-title reveal">研究方向</h2>
+            <p class="section-desc reveal">下一代的運算平台，將不再僅僅是處理資訊的工具，而是深化人類連結、擴展感知維度的媒介。</p>
+
+            <div class="research-grid">
+                <div class="research-card reveal">
+                    <div class="research-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                     </div>
-                    <h3>Education</h3>
-                    <p>B.S. in Computer Science &amp; Information Engineering</p>
-                    <p class="about-card-sub">Southern Taiwan University of Science and Technology (STUST), 2025–Present</p>
+                    <h3>情感運算</h3>
+                    <p>Affective Computing</p>
+                    <p class="research-card-detail">將抽象的「情感」與「同理心」，轉譯為可被直接感知與運算的物理訊號。透過即時生理數據與行為模式分析，建立人機之間真正意義上的情感迴路。</p>
                 </div>
-                <div class="about-card reveal">
-                    <div class="about-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <div class="research-card reveal">
+                    <div class="research-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     </div>
-                    <h3>Focus</h3>
-                    <p>AI / Affective Computing / HCI / Cognitive Science</p>
-                    <p class="about-card-sub">Exploring the intersection of human perception, emotion, and intelligent systems</p>
+                    <h3>生成式 AI</h3>
+                    <p>Generative AI</p>
+                    <p class="research-card-detail">超越文字生成的框架，探索 AI 如何重塑人類感知的完整頻寬。從語意解構到多模態重建，讓機器不僅「理解」內容，更能「表達」體驗。</p>
                 </div>
-                <div class="about-card reveal">
-                    <div class="about-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <div class="research-card reveal">
+                    <div class="research-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                     </div>
-                    <h3>Mission</h3>
-                    <p>Breaking the boundaries of text-based media</p>
-                    <p class="about-card-sub">Using AI to unlock the full spectrum of human perception for narrative experiences</p>
+                    <h3>互動設計</h3>
+                    <p>Interaction Design</p>
+                    <p class="research-card-detail">科技應適應人類認知，而非反之。設計以人為本的互動界面，在數位世界與人類感知之間建立無縫的橋樑，讓每一次互動都成為有意義的體驗。</p>
                 </div>
             </div>
-            <div class="about-text reveal">
-                <p>I'm Te-Wei Ko, a freshman at STUST's Computer Science department with an unconventional background spanning semiconductor engineering and philosophy. My work sits at the intersection of artificial intelligence, human-computer interaction, and cognitive science — driven by a conviction that technology should adapt to human cognition, not the other way around.</p>
-                <p>My core project, ModernReader, applies a Cognitive Rhythm Alignment (CRA) model to dynamically tune reading interfaces to the user's real-time cognitive state, and incorporates generative AI to reconstruct narrative across multiple sensory modalities. I also build tools like Sensory Shield to reduce digital noise for neurodiverse users.</p>
+
+            <!-- Project H.O.L.O. -->
+            <div class="holo-mission reveal">
+                <div class="holo-line"></div>
+                <p class="holo-label">Project H.O.L.O.</p>
+                <p class="holo-quote">「故事的核心在於體驗，而非僅是文字。數百年來，我們透過視覺解碼符號來理解故事——但文字本身，僅是通往故事世界的媒介。」</p>
+                <p class="holo-desc">Project H.O.L.O. 的使命，就是打破這個媒介的限制。透過深度語意分析解構文本，再經由生成式 AI 將其重塑為豐富的聽覺饗宴與精準的感官回饋——從聆聽角色帶有情感的對話，到感受書中描寫的微風與氣味。在這裡，讀者不再是旁觀者，而是故事世界中的親歷者。</p>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- ==================== PROJECTS ==================== -->
     <section class="section projects" id="projects">
         <div class="container">
-            <h2 class="section-title reveal">Projects</h2>
-            <div class="projects-grid">
-                <!-- ModernReader -->
-                <div class="project-card reveal">
-                    <div class="project-card-content">
-                        <div class="project-badge">Core Project / AI Framework</div>
-                        <h3 class="project-title">ModernReader</h3>
-                        <p class="project-desc">AI-powered reading platform built on the Cognitive Rhythm Alignment (CRA) model. Tracks scrolling behavior, reading speed, and attention metrics in real-time to dynamically adapt content presentation to the user's cognitive state. Goes beyond adaptation — deconstructs text through deep semantic analysis and reconstructs narrative via generative AI to engage the full spectrum of human perception: visual, auditory, and beyond. Breaking the centuries-old constraint of text-as-medium for storytelling.</p>
-                        <div class="project-stats">
-                            <span class="project-stat">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                                2026 海峡两岸创业大赛决赛入围
-                            </span>
-                            <span class="project-stat">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-                                24-subject within-subject experiment
-                            </span>
-                        </div>
-                        <div class="project-tags">
-                            <span>NLP</span><span>Generative AI</span><span>Multimodal</span><span>Semantic Analysis</span>
-                        </div>
-                    </div>
-                    <div class="project-card-glow"></div>
-                </div>
+            <div class="section-label reveal">Featured Work</div>
+            <h2 class="section-title reveal">精選專案</h2>
 
-                <!-- Sensory Shield -->
-                <div class="project-card reveal">
-                    <div class="project-card-content">
-                        <div class="project-badge">Chrome Extension</div>
-                        <h3 class="project-title">Sensory Shield</h3>
-                        <p class="project-desc">A Chrome extension designed to reduce visual noise on web pages, serving neurodiverse users with sensory sensitivity. Intelligently filters distracting elements while preserving core content structure and readability.</p>
-                        <div class="project-tags">
-                            <span>Accessibility</span><span>Neurodiversity</span><span>Web Filtering</span><span>UX</span>
+            <!-- AI-Reader -->
+            <div class="project-featured reveal">
+                <div class="project-featured-bg"></div>
+                <div class="project-featured-content">
+                    <div class="project-featured-meta">
+                        <span class="project-featured-badge">Core Project</span>
+                        <span class="project-featured-lang">Python</span>
+                    </div>
+                    <h3 class="project-featured-title">AI-Reader</h3>
+                    <p class="project-featured-subtitle">Project H.O.L.O. — 故事的多感官重建引擎</p>
+                    <p class="project-featured-desc">一個先進的 AI 框架，將文字敘事轉化為可感知的多維度體驗。深度語意分析解構文本後，由生成式 AI 重塑為聽覺、視覺與感官回饋的豐富交織。基於 Cognitive Rhythm Alignment (CRA) 模型，即時追蹤閱讀行為、注意力與認知狀態，動態調適內容呈現方式。</p>
+                    <div class="project-featured-stats">
+                        <div class="project-stat">
+                            <span class="project-stat-value">2026</span>
+                            <span class="project-stat-label">海峽兩岸創業大賽決賽入圍</span>
+                        </div>
+                        <div class="project-stat">
+                            <span class="project-stat-value">24人</span>
+                            <span class="project-stat-label">受試者內實驗設計</span>
+                        </div>
+                        <div class="project-stat">
+                            <span class="project-stat-value">★ 1</span>
+                            <span class="project-stat-label">GitHub Stars</span>
                         </div>
                     </div>
-                    <div class="project-card-glow"></div>
+                    <div class="project-featured-tags">
+                        <span>NLP</span><span>Generative AI</span><span>Multimodal</span><span>Semantic Analysis</span><span>CRA Model</span>
+                    </div>
+                    <a href="https://github.com/TeWei02/AI-Reader" target="_blank" rel="noopener" class="project-featured-link">
+                        查看專案 <span>&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- qbridge -->
+            <div class="project-featured reveal">
+                <div class="project-featured-bg"></div>
+                <div class="project-featured-content">
+                    <div class="project-featured-meta">
+                        <span class="project-featured-badge">Systems</span>
+                        <span class="project-featured-lang">C++ / Python</span>
+                    </div>
+                    <h3 class="project-featured-title">qbridge</h3>
+                    <p class="project-featured-subtitle">高效能量子計算模擬器</p>
+                    <p class="project-featured-desc">以 C++ 實作核心量子模擬引擎，涵蓋 state vector 精確模擬、通用量子閘套用、量子測量、Bell 態製備、Deutsch-Jozsa 演算法與 Grover 搜尋演算法。Python 接口層提供直覺的量子電路建構體驗，橋接高效能計算與量子演算法研究。</p>
+                    <div class="project-featured-tags">
+                        <span>Quantum Computing</span><span>State Vector</span><span>Bell State</span><span>Deutsch-Jozsa</span><span>Grover</span>
+                    </div>
+                    <a href="https://github.com/TeWei02/qbridge" target="_blank" rel="noopener" class="project-featured-link">
+                        查看專案 <span>&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- sensory-shield -->
+            <div class="project-featured reveal">
+                <div class="project-featured-bg"></div>
+                <div class="project-featured-content">
+                    <div class="project-featured-meta">
+                        <span class="project-featured-badge">Accessibility</span>
+                        <span class="project-featured-lang">JavaScript</span>
+                    </div>
+                    <h3 class="project-featured-title">sensory-shield</h3>
+                    <p class="project-featured-subtitle">降低數位噪音的 Chrome 擴充功能</p>
+                    <p class="project-featured-desc">為神經多樣性使用者設計的網頁視覺噪音過濾工具。智慧識別並過濾分散注意力的頁面元素，同時完整保留核心內容結構與可讀性。以無干擾的瀏覽體驗，讓數位世界對每個人更加友善。</p>
+                    <div class="project-featured-tags">
+                        <span>Accessibility</span><span>Neurodiversity</span><span>Web Filtering</span><span>Chrome Extension</span><span>UX</span>
+                    </div>
+                    <a href="https://github.com/TeWei02/sensory-shield" target="_blank" rel="noopener" class="project-featured-link">
+                        查看專案 <span>&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Other Projects Grid -->
+            <div class="projects-mini reveal">
+                <h3 class="projects-mini-title">更多專案</h3>
+                <div class="projects-mini-grid">
+                    <a href="https://github.com/TeWei02/calc-tracker" target="_blank" rel="noopener" class="project-mini-card">
+                        <span class="project-mini-icon">&#8721;</span>
+                        <div>
+                            <h4>calc-tracker</h4>
+                            <p>微積分練習與錯題管理系統</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/TeWei02/Carbon.Negtive" target="_blank" rel="noopener" class="project-mini-card">
+                        <span class="project-mini-icon">&#9673;</span>
+                        <div>
+                            <h4>Carbon.Negtive</h4>
+                            <p>碳負排農業平台 &middot; Young飛全球行動</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/TeWei02/StatSigCalculator" target="_blank" rel="noopener" class="project-mini-card">
+                        <span class="project-mini-icon">&#963;²</span>
+                        <div>
+                            <h4>StatSigCalculator</h4>
+                            <p>統計顯著性計算工具</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/TeWei02/From-Signal-to-System-Communications-Sensing-and-Robotic-Navigation" target="_blank" rel="noopener" class="project-mini-card">
+                        <span class="project-mini-icon">&#9741;</span>
+                        <div>
+                            <h4>Signal-to-System</h4>
+                            <p>通訊感測與機器人導航</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/TeWei02/Robotic-Navigation-and-Exploration" target="_blank" rel="noopener" class="project-mini-card">
+                        <span class="project-mini-icon">&#8999;</span>
+                        <div>
+                            <h4>Robotic Navigation</h4>
+                            <p>機器人導航與探索系統</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/TeWei02/multithreaded-file-transfer-scheduler-simulator" target="_blank" rel="noopener" class="project-mini-card">
+                        <span class="project-mini-icon">&parallel;</span>
+                        <div>
+                            <h4>File Scheduler</h4>
+                            <p>多執行緒檔案傳輸排程模擬器</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="section skills" id="skills">
-        <div class="container">
-            <h2 class="section-title reveal">Skills &amp; Expertise</h2>
-            <div class="skills-cloud reveal">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">PyTorch</span>
-                <span class="skill-tag">CUDA</span>
-                <span class="skill-tag">HPC</span>
-                <span class="skill-tag">NLP</span>
-                <span class="skill-tag">LLM</span>
-                <span class="skill-tag">Deep Learning</span>
-                <span class="skill-tag">Cognitive Modeling</span>
-                <span class="skill-tag">Data Analysis</span>
-                <span class="skill-tag">C / C++</span>
-                <span class="skill-tag">Linux / UNIX</span>
-                <span class="skill-tag">Embedded Systems</span>
-                <span class="skill-tag">Machine Learning</span>
-                <span class="skill-tag">Game Theory</span>
-                <span class="skill-tag">Graph Theory</span>
-                <span class="skill-tag">Robotics & SLAM</span>
-                <span class="skill-tag">Cybersecurity</span>
-                <span class="skill-tag">AutoCAD</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Timeline -->
-    <section class="section experience" id="experience">
-        <div class="container">
-            <h2 class="section-title reveal">Experience</h2>
-            <div class="timeline">
-                <!-- Education -->
-                <div class="timeline-category reveal">
-                    <h3 class="timeline-category-title">Education</h3>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2025 – Present</span>
-                        <h4>B.S. Computer Science &amp; Information Engineering</h4>
-                        <p>Southern Taiwan University of Science and Technology (STUST)</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2017 – 2022</span>
-                        <h4>Mechanical Drafting</h4>
-                        <p>National Tainan Industrial Vocational High School</p>
-                    </div>
-                </div>
-
-                <!-- Internship -->
-                <div class="timeline-category reveal">
-                    <h3 class="timeline-category-title">Internship</h3>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2022</span>
-                        <h4>Semiconductor Engineering Intern</h4>
-                        <p>TSMC Contractor — Rotated through process, equipment, and quality departments, gaining hands-on exposure to front-end semiconductor manufacturing (lithography, etching, deposition).</p>
-                    </div>
-                </div>
-
-                <!-- Awards -->
-                <div class="timeline-category reveal">
-                    <h3 class="timeline-category-title">Awards &amp; Achievements</h3>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot timeline-dot-accent"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2026</span>
-                        <h4>海峡两岸青年创新创业大赛 — Finalist</h4>
-                        <p>ModernReader project passed preliminary review, advancing to final judging round</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot timeline-dot-accent"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2026</span>
-                        <h4>Young飞 Global Action Program — Selected</h4>
-                        <p>Ministry of Education Youth Development Administration — Carbon-negative agriculture team</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot timeline-dot-accent"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2026</span>
-                        <h4>11th STUST Literature Award — Honorable Mention</h4>
-                        <p>Short story category: "游标闪烁之间" (Between the Blinking Cursor)</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2026</span>
-                        <h4>HPC x AI 2026 Winter Camp</h4>
-                        <p>Certificate of completion — National Center for High-Performance Computing (NCHC)</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2024</span>
-                        <h4>Semiconductor Process &amp; Data Analysis Certificate</h4>
-                        <p>NYCU Laser System Research Center</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
+    <!-- ==================== CONTACT ==================== -->
     <section class="section contact" id="contact">
         <div class="container">
-            <h2 class="section-title reveal">Contact</h2>
-            <div class="contact-wrapper reveal">
-                <div class="contact-info">
-                    <p class="contact-intro">Interested in collaboration, research discussion, or just want to say hello? Reach out anytime.</p>
-                    <div class="contact-methods">
-                        <a href="mailto:tewei.ko0418@gmail.com" class="contact-method">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <span>tewei.ko0418@gmail.com</span>
-                        </a>
-                        <a href="https://github.com/TeWei02" target="_blank" rel="noopener" class="contact-method">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                            <span>github.com/TeWei02</span>
-                        </a>
-                        <a href="https://orcid.org/0009-0003-1348-3558" target="_blank" rel="noopener" class="contact-method">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-3.994-3.722h-2.325z"/></svg>
-                            <span>ORCID: 0009-0003-1348-3558</span>
-                        </a>
+            <div class="section-label reveal">Connect</div>
+            <h2 class="section-title reveal">聯絡與連結</h2>
+            <p class="section-desc reveal">對合作、研究討論，或只是想打個招呼？隨時歡迎。</p>
+
+            <div class="contact-grid reveal">
+                <a href="https://github.com/TeWei02" target="_blank" rel="noopener" class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     </div>
-                </div>
-                <form class="contact-form" action="#" method="post">
-                    <div class="form-group">
-                        <input type="text" id="name" class="form-input" placeholder=" " required>
-                        <label for="name" class="form-label">Name</label>
+                    <span class="contact-card-label">GitHub</span>
+                    <span class="contact-card-value">TeWei02</span>
+                </a>
+                <a href="https://orcid.org/0009-0003-1348-3558" target="_blank" rel="noopener" class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-3.994-3.722h-2.325z"/></svg>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="email" class="form-input" placeholder=" " required>
-                        <label for="email" class="form-label">Email</label>
+                    <span class="contact-card-label">ORCID</span>
+                    <span class="contact-card-value">0009-0003-1348-3558</span>
+                </a>
+                <a href="mailto:tewei.ko0418@gmail.com" class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
                     </div>
-                    <div class="form-group">
-                        <textarea id="message" class="form-input form-textarea" rows="5" placeholder=" " required></textarea>
-                        <label for="message" class="form-label">Message</label>
-                    </div>
-                    <button type="submit" class="form-submit">Send Message</button>
-                </form>
+                    <span class="contact-card-label">Email</span>
+                    <span class="contact-card-value">tewei.ko0418@gmail.com</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-inner">
-                <p>&copy; 2026 Te-Wei Ko. Built with curiosity.</p>
-                <div class="footer-links">
-                    <a href="https://github.com/TeWei02" target="_blank" rel="noopener">GitHub</a>
-                    <a href="https://orcid.org/0009-0003-1348-3558" target="_blank" rel="noopener">ORCID</a>
-                    <a href="mailto:tewei.ko0418@gmail.com">Email</a>
-                </div>
-            </div>
+            <p>&copy; 2026 柯德瑋 Te-Wei Ko</p>
+            <p class="footer-tagline">Built with curiosity. Driven by wonder.</p>
         </div>
     </footer>
 
