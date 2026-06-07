@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>當機器學會讀心：情感運算入門 — 柯德瑋 Te-Wei Ko</title>
+    <meta name="description" content="情感運算不是讓機器有感情，而是讓機器理解人的感情——從 Picard 的 1995 年論文到 H.O.L.O. 的即時認知調適。">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .article-page { padding-top: 100px; min-height: 100vh; background: #0a0a0f; color: #e0e0e0; }
+        .article-container { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+        .article-title { font-family: 'Noto Sans TC', sans-serif; font-size: 2rem; font-weight: 900; line-height: 1.4; color: #fff; margin-bottom: 12px; }
+        .article-subtitle { font-size: 1.05rem; color: #888; margin-bottom: 48px; border-left: 3px solid #6c5ce7; padding-left: 16px; }
+        .article-body h2 { font-family: 'Noto Sans TC', sans-serif; font-size: 1.35rem; font-weight: 700; color: #fff; margin-top: 48px; margin-bottom: 16px; }
+        .article-body h2::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #6c5ce7; border-radius: 50%; margin-right: 12px; vertical-align: middle; }
+        .article-body h3 { font-family: 'Noto Sans TC', sans-serif; font-size: 1.1rem; font-weight: 600; color: #ccc; margin-top: 32px; margin-bottom: 12px; }
+        .article-body p { font-size: 1.05rem; line-height: 1.85; margin-bottom: 20px; }
+        .article-body blockquote { border-left: 3px solid #6c5ce7; padding: 12px 20px; margin: 24px 0; color: #b0b0ff; font-style: italic; background: rgba(108,92,231,0.06); border-radius: 0 8px 8px 0; }
+        .article-body strong { color: #fff; font-weight: 600; }
+        .article-body a { color: #a29bfe; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        .article-body a:hover { border-color: #a29bfe; }
+        .article-body hr { border: none; border-top: 1px solid #222; margin: 48px 0; }
+        .article-body code { background: #1a1a2e; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; color: #a29bfe; }
+        .article-body ul, .article-body ol { margin-bottom: 20px; padding-left: 24px; }
+        .article-body li { font-size: 1rem; line-height: 1.8; margin-bottom: 6px; }
+        .timeline { position: relative; padding-left: 24px; margin: 32px 0; border-left: 2px solid #1a1a2e; }
+        .timeline-item { margin-bottom: 24px; position: relative; }
+        .timeline-item::before { content: ""; position: absolute; left: -30px; top: 6px; width: 10px; height: 10px; background: #1a1a2e; border-radius: 50%; border: 2px solid #6c5ce7; }
+        .timeline-year { font-size: 0.85rem; color: #a29bfe; font-weight: 600; }
+        .timeline-text { font-size: 0.95rem; color: #aaa; margin-top: 2px; }
+        .article-signature { margin-top: 48px; color: #666; font-size: 0.95rem; }
+        .article-signature a { color: #a29bfe; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">TW</a>
+            <div class="nav-links" id="nav-links">
+                <a href="../index.html#research" class="nav-link">Research</a>
+                <a href="../index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html" class="nav-link">Articles</a>
+                <a href="../publications/" class="nav-link">Publications</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <div class="article-container">
+            <h1 class="article-title">當機器學會讀心：<br>情感運算入門</h1>
+            <p class="article-subtitle">情感運算不是讓機器有感情，而是讓機器理解人的感情——從 1995 年到 H.O.L.O.，一條從實驗室走向真實場景的技術路徑。</p>
+
+            <div class="article-body">
+
+                <h2>一、一台會讀表情的電腦</h2>
+                <p>1995 年，MIT 媒體實驗室的 Rosalind Picard 做了一件在當時看起來很奇怪的事：她試圖讓電腦理解人類的情緒。</p>
+                <p>當時的主流 AI 在做什麼？下棋、解數學題、辨識語音。情緒？那是詩人和心理學家的事。Picard 的同事覺得她走錯實驗室了。</p>
+                <p>她在 1997 年出版的《Affective Computing》中寫了一句後來被無數次引用的話：<strong>「如果電腦要真正有智慧，它們必須能感知和表達情緒。」</strong></p>
+                <p>二十九年後的今天，這個想法不再奇怪。你的手機能從自拍中偵測笑容、客服機器人能從語氣判斷你的不耐煩、自駕車能監測駕駛的疲勞狀態。情感運算已經從一個學術異端，變成了數十億美元的產業。</p>
+                <p>但大部分產品只做到了一半——它們能<strong>辨識</strong>情緒，卻不知道<strong>如何回應</strong>情緒。H.O.L.O. 試圖解決的，就是後半段。</p>
+
+                <h2>二、情感運算到底在做什麼</h2>
+
+                <p>情感運算的核心命題可以濃縮為三個問題：</p>
+                <ol>
+                    <li><strong>感知</strong>——機器如何知道你在開心還是沮喪？</li>
+                    <li><strong>推理</strong>——知道你的情緒之後，它該做什麼？</li>
+                    <li><strong>表達</strong>——它如何用你能理解的方式回應？</li>
+                </ol>
+
+                <h3>2.1 感知層：訊號無所不在</h3>
+                <p>人類表達情緒的管道遠比我們意識到的多：</p>
+                <ul>
+                    <li><strong>臉部表情</strong>：嘴角、眉毛、眼瞼的微動——FACS（ Facial Action Coding System）將 46 個面部動作單元編碼為情緒信號</li>
+                    <li><strong>語音特徵</strong>：音高、語速、停頓頻率——焦慮時語速加快、抑鬱時音高下降</li>
+                    <li><strong>生理信號</strong>：心率變異（HRV）、皮膚電導（GSR）、瞳孔擴張——這些是情緒最難偽裝的指標</li>
+                    <li><strong>行為模式</strong>：打字速度、滑鼠移動軌跡、頁面停留時間——這些「數位足跡」往往比自評問卷更誠實</li>
+                </ul>
+
+                <h3>2.2 推理層：情緒不是標籤</h3>
+                <p>早期的情感運算有一個天真的假設：情緒可以像物體分類一樣被標記——「這張臉 = 快樂」、「那張臉 = 悲傷」。但真實的情緒不是離散的類別。你在捷運上收到前男友的訊息時，臉上可能同時有驚訝、厭惡、和一絲懷念。心理學家 Lisa Feldman Barrett 的「情緒建構理論」更進一步指出：<strong>情緒不是被觸發的，是被建構的</strong>——大腦根據過去經驗、當前情境、和身體狀態，即時建構出一個情緒實例。</p>
+                <p>這意味著，真正有用的情感運算系統不能只輸出一個情緒標籤。它需要理解<strong>脈絡</strong>——這個人現在在做什麼？他過去幾分鐘的情緒軌跡是什麼？他接下來要做什麼？</p>
+
+                <h3>2.3 表達層：回應不是說教</h3>
+                <p>這是情感運算最被忽略的一環。辨識出使用者沮喪之後，系統該做什麼？</p>
+                <p>大多數產品的答案是：什麼也不做，或者彈出一個「需要幫助嗎？」的對話框。但一個已經沮喪到無法專心閱讀的人，不會因為看到一個對話框就恢復冷靜。真正有效的回應必須<strong>繞過認知負荷</strong>——不透過文字告訴你「放輕鬆」，而是直接改變你的感官輸入：降低畫面對比度、切換到聽覺模式、放慢內容推進的節奏。</p>
+                <p>這就是 H.O.L.O. 的設計邏輯。</p>
+
+                <h2>三、這條路的關鍵節點</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1995–1997</div>
+                        <div class="timeline-text">Picard 提出 Affective Computing 概念，MIT 媒體實驗室成立情感運算研究群</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2000s</div>
+                        <div class="timeline-text">Ekman 的基礎情緒理論主導臉部表情辨識研究；生理感測器（GSR、ECG）進入實驗室</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2010s</div>
+                        <div class="timeline-text">深度學習讓情緒辨識準確率大幅提升；Apple Watch 等消費級裝置開始內建 HRV 監測</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2014</div>
+                        <div class="timeline-text">Barrett 發表情緒建構理論，挑戰基礎情緒模型——情緒不是普世類別，而是大腦的主動建構</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020s</div>
+                        <div class="timeline-text">多模態融合成為主流；大型語言模型開始具備情感推理雛形；情感運算從辨識轉向適應</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025–2026</div>
+                        <div class="timeline-text">H.O.L.O. 提出 CRA 模型：在閱讀場景中實現即時認知節律對齊——情感運算從「標記你是什麼情緒」走向「根據你的認知狀態調整內容呈現」</div>
+                    </div>
+                </div>
+
+                <h2>四、情感運算在閱讀場景中的特殊性</h2>
+
+                <p>大多數情感運算的應用場景有一個共同特徵：<strong>情緒是干擾</strong>。自駕車需要偵測駕駛疲勞，因為疲勞會導致車禍。客服系統需要偵測用戶憤怒，因為憤怒客戶可能流失。在這些場景中，情緒是需要被管理、被消除的變數。</p>
+
+                <p>但閱讀不一樣。</p>
+
+                <p>在閱讀中，情緒不是干擾——<strong>情緒是目的</strong>。你讀小說，不是為了從第一頁加速衝到最後一頁，而是為了體驗那些讓你停下來、呼吸改變、眼眶發熱的段落。一個好的閱讀體驗是情緒曲線與敘事曲線的共振。</p>
+
+                <p>這讓閱讀成為情感運算最困難的應用場景之一。你不但需要知道讀者當下的情緒狀態，還需要知道文本此刻正在說什麼、它的情感基調是什麼、以及這兩者之間的落差有多大。這是三維的匹配問題——不是「讀者沮喪 → 給鼓勵」，而是「讀者認知頻寬下降 → 文本敘事正處於情感低谷 → 用聽覺模態替代視覺模態，讓讀者在不增加認知負荷的前提下繼續體驗故事」。</p>
+
+                <h2>五、從辨識到適應：H.O.L.O. 的貢獻</h2>
+
+                <p>H.O.L.O. 的 CRA 模型在這個領域中的獨特之處，在於它把情感運算的三個層面——感知、推理、表達——整合成一個閉環系統，並且把它放在一個真實的使用場景（閱讀）中驗證。</p>
+
+                <p>具體來說，CRA 做了三件前人沒做好的事：</p>
+
+                <ol>
+                    <li><strong>不要求穿戴裝置</strong>。認知追蹤完全基於行為數據（閱讀速度、停留時間、滾動模式），不需要 EEG 頭帶或心率胸帶。這意味著它可以部署在任何裝置上，不需要額外硬體。</li>
+                    <li><strong>回應不是對話框，是感官調適</strong>。當注意力下降時，系統不會彈出提醒，而是切換到聽覺模式或調整視覺氛圍。這是「不經認知層的適應」——使用者不會意識到系統在幫助他，他只會覺得「讀起來比較順」。</li>
+                    <li><strong>把文本內容納入匹配公式</strong>。大多數情感運算系統只關心使用者狀態，CRA 同時分析文本的敘事結構（情感曲線、場景轉換、對話密度），然後將兩者對齊。這是「內容感知的情感適應」——不是通用的，而是為<strong>這段文字、這個讀者、這個時刻</strong>量身定製的。</li>
+                </ol>
+
+                <h2>六、這個領域的未解問題</h2>
+
+                <p>情感運算遠未成熟。以下是幾個 H.O.L.O. 正在面對、但整個領域都還無法解決的問題：</p>
+
+                <ul>
+                    <li><strong>個體差異</strong>：同一個心率數字，對 A 是焦慮、對 B 是興奮。情緒的基準線高度個人化，需要長期學習。</li>
+                    <li><strong>文化差異</strong>：Ekman 的基礎情緒理論受到大量跨文化研究的挑戰。在一個文化中被視為「憤怒」的表情，在另一個文化中可能是「專注」。</li>
+                    <li><strong>倫理邊界</strong>：如果一個系統能即時知道你的情緒狀態，誰有權存取這些數據？廣告商？保險公司？雇主？</li>
+                    <li><strong>過度適應</strong>：如果系統總是遷就使用者的認知狀態，會不會讓使用者永遠無法鍛鍊專注力？「適應」和「溺愛」之間的界線在哪裡？</li>
+                </ul>
+
+                <p>這些問題沒有標準答案。但一個好的研究者不應該迴避它們——承認邊界，本身就是研究誠意的一部分。</p>
+
+                <h2>七、結語</h2>
+
+                <p>情感運算走了三十年，從「讓電腦辨識表情」走到了「讓系統適應認知狀態」。這中間的轉折點不是任何一個演算法的突破，而是一個更根本的觀念轉變：<strong>情緒不是需要被分類的物件，而是需要被理解的信號。</strong></p>
+
+                <p>H.O.L.O. 做的是這個觀念在閱讀場景中的工程實現。它不聲稱解決了情感運算的所有問題，但它指向了一個方向：科技的最終目的不是更快的處理速度或更高的準確率，而是<strong>讓那些因為認知差異而被排除在閱讀之外的人，重新回到故事裡</strong>。</p>
+
+                <hr>
+
+                <p class="article-signature">
+                    柯德瑋，2026 年 6 月<br>
+                    延伸閱讀：<a href="cra-model.html">CRA 模型技術詳解</a> · <a href="emotion-research.html">當情緒成為研究對象</a>
+                </p>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
