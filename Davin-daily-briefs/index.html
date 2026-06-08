@@ -1,299 +1,105 @@
 <!DOCTYPE html>
 <html lang="zh-Hant" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Davin Daily Briefs — 全自動作品產出</title>
-    <style>
-        :root {
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --bg-hover: #1c2128;
-            --border: #21262d;
-            --text-primary: #c9d1d9;
-            --text-secondary: #8b949e;
-            --text-muted: #484f58;
-            --accent: #58a6ff;
-            --accent-hover: #79c0ff;
-            --header-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            --badge-bg: #1c2128;
-            --badge-border: #30363d;
-            --nav-bg: #161b22;
-            --shadow: none;
-        }
-        [data-theme="light"] {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-hover: #e9ecef;
-            --border: #dee2e6;
-            --text-primary: #212529;
-            --text-secondary: #495057;
-            --text-muted: #868e96;
-            --accent: #1a73e8;
-            --accent-hover: #1557b0;
-            --header-gradient: linear-gradient(135deg, #e8f0fe 0%, #d2e3fc 50%, #c6dafc 100%);
-            --badge-bg: #e9ecef;
-            --badge-border: #ced4da;
-            --nav-bg: #ffffff;
-            --shadow: 0 1px 3px rgba(0,0,0,0.08);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, "Noto Sans TC", "PingFang TC", "Inter", sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
-        }
-        header {
-            background: var(--header-gradient);
-            padding: 50px 20px;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-        }
-        header h1 {
-            font-size: 2rem;
-            background: linear-gradient(90deg, #58a6ff, #bc8cff, #79c0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-        header p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-        }
-        header .updated {
-            margin-top: 12px;
-            font-size: 0.82rem;
-            color: var(--text-muted);
-        }
-        .theme-toggle-wrapper {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-        }
-        .theme-toggle {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            width: 48px;
-            height: 26px;
-            cursor: pointer;
-            position: relative;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            padding: 2px;
-        }
-        .theme-toggle:hover { background: var(--bg-hover); }
-        .theme-toggle .knob {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #f0f6fc;
-            position: absolute;
-            left: 3px;
-            transition: transform 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            line-height: 1;
-        }
-        [data-theme="light"] .theme-toggle .knob {
-            transform: translateX(22px);
-            background: #ffd43b;
-        }
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px;
-            padding: 16px 12px;
-            background: var(--nav-bg);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: var(--shadow);
-        }
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 5px 12px;
-            border-radius: 16px;
-            font-size: 0.85rem;
-            transition: all 0.2s;
-        }
-        nav a:hover {
-            color: var(--text-primary);
-            background: var(--bg-hover);
-        }
-        .container {
-            max-width: 880px;
-            margin: 0 auto;
-            padding: 28px 18px 60px;
-        }
-        .section {
-            margin-bottom: 32px;
-            padding: 22px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-        }
-        .section h2 {
-            font-size: 1.3rem;
-            margin-bottom: 4px;
-            color: var(--text-primary);
-        }
-        .section .count {
-            color: var(--text-muted);
-            font-size: 0.82rem;
-            margin-bottom: 14px;
-        }
-        .file-list { list-style: none; }
-        .file-list li {
-            padding: 9px 10px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.15s;
-        }
-        .file-list li:hover { background: var(--bg-hover); }
-        .file-list li:last-child { border-bottom: none; }
-        .file-list a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.92rem;
-            flex: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .file-list a:hover { color: var(--accent-hover); text-decoration: underline; }
-        .file-list time {
-            color: var(--text-muted);
-            font-size: 0.78rem;
-            margin-left: 10px;
-            white-space: nowrap;
-        }
-        .ext-badge {
-            font-size: 0.68rem;
-            color: var(--text-secondary);
-            background: var(--badge-bg);
-            border: 1px solid var(--badge-border);
-            border-radius: 3px;
-            padding: 1px 5px;
-            margin-left: 5px;
-            vertical-align: middle;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        footer {
-            text-align: center;
-            padding: 36px 18px;
-            color: var(--text-muted);
-            font-size: 0.78rem;
-            border-top: 1px solid var(--border);
-        }
-        @media (max-width: 640px) {
-            header h1 { font-size: 1.5rem; }
-            nav { gap: 3px; }
-            nav a { font-size: 0.78rem; padding: 4px 9px; }
-            .section { padding: 16px; }
-            .theme-toggle-wrapper { top: 10px; right: 12px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davin Daily Briefs — 全自動作品產出</title>
+<style>
+:root{--bg-primary:#0d1117;--bg-secondary:#161b22;--bg-hover:#1c2128;--border:#21262d;--text-primary:#c9d1d9;--text-secondary:#8b949e;--text-muted:#484f58;--accent:#58a6ff;--accent-hover:#79c0ff;--header-gradient:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);--badge-bg:#1c2128;--badge-border:#30363d;--nav-bg:#161b22;--shadow:none}
+[data-theme="light"]{--bg-primary:#fff;--bg-secondary:#f8f9fa;--bg-hover:#e9ecef;--border:#dee2e6;--text-primary:#212529;--text-secondary:#495057;--text-muted:#868e96;--accent:#1a73e8;--accent-hover:#1557b0;--header-gradient:linear-gradient(135deg,#e8f0fe 0%,#d2e3fc 50%,#c6dafc 100%);--badge-bg:#e9ecef;--badge-border:#ced4da;--nav-bg:#fff;--shadow:0 1px 3px rgba(0,0,0,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans TC","PingFang TC",Inter,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;transition:background .3s,color .3s}
+header{background:var(--header-gradient);padding:50px 20px;text-align:center;border-bottom:1px solid var(--border);position:relative}
+header h1{font-size:2rem;background:linear-gradient(90deg,#58a6ff,#bc8cff,#79c0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+header p{color:var(--text-secondary);font-size:1.05rem}
+header .updated{margin-top:12px;font-size:.82rem;color:var(--text-muted)}
+.theme-toggle-wrapper{position:absolute;top:16px;right:20px}
+.theme-toggle{background:var(--bg-secondary);border:1px solid var(--border);border-radius:24px;width:48px;height:26px;cursor:pointer;position:relative;transition:background .3s;display:flex;align-items:center;padding:2px}
+.theme-toggle:hover{background:var(--bg-hover)}
+.theme-toggle .knob{width:20px;height:20px;border-radius:50%;background:#f0f6fc;position:absolute;left:3px;transition:transform .3s}
+[data-theme="light"] .theme-toggle .knob{transform:translateX(22px);background:#ffd43b}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:16px 12px;background:var(--nav-bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;box-shadow:var(--shadow)}
+nav a{color:var(--text-secondary);text-decoration:none;padding:5px 12px;border-radius:16px;font-size:.85rem;transition:all .2s}
+nav a:hover{color:var(--text-primary);background:var(--bg-hover)}
+.container{max-width:880px;margin:0 auto;padding:28px 18px 60px}
+.section{margin-bottom:32px;padding:22px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px}
+.section h2{font-size:1.3rem;margin-bottom:4px;color:var(--text-primary)}
+.section .count{color:var(--text-muted);font-size:.82rem;margin-bottom:14px}
+.file-list{list-style:none}
+.file-list li{padding:9px 10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;transition:background .15s}
+.file-list li:hover{background:var(--bg-hover)}
+.file-list li:last-child{border-bottom:none}
+.file-list li span:first-child{color:var(--accent);font-size:.92rem;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-list time{color:var(--text-muted);font-size:.78rem;margin-left:10px;white-space:nowrap}
+.ext-badge{font-size:.68rem;color:var(--text-secondary);background:var(--badge-bg);border:1px solid var(--badge-border);border-radius:3px;padding:1px 5px;margin-left:5px}
+.empty-state{text-align:center;padding:30px;color:var(--text-muted);font-size:.9rem}
+footer{text-align:center;padding:36px 18px;color:var(--text-muted);font-size:.78rem;border-top:1px solid var(--border)}
+@media(max-width:640px){header h1{font-size:1.5rem}nav{gap:3px}nav a{font-size:.78rem;padding:4px 9px}.section{padding:16px}.theme-toggle-wrapper{top:10px;right:12px}}
+</style>
 </head>
 <body>
-    <header>
-        <div class="theme-toggle-wrapper">
-            <button class="theme-toggle" id="themeToggle" aria-label="切換淺色/深色模式">
-                <span class="knob"></span>
-            </button>
-        </div>
-        <h1>Davin Daily Briefs</h1>
-        <p>清大拾穗 × 交大百川 特殊選才 · 五大方向全自動產出</p>
-        <div class="updated">最後更新：2026-06-09</div>
-    </header>
-    <nav>
-        <a href="#tech">資訊/資安</a>
-        <a href="#biz">商管/創業</a>
-        <a href="#design">藝術/設計</a>
-        <a href="#language">語言/人文</a>
-        <a href="#physics">物理/數學</a>
-        <a href="#github">開源專案</a>
-        <a href="#ctf">CTF解題</a>
-        <a href="#yt">教學影片</a>
-    </nav>
-    <div class="container">
-        <section class="section" id="tech">
-            <h2>資訊 / 資安</h2>
-            <p class="count">每日技術文章 · 進階系統管理 · 網路安全</p>
-            <ul class="file-list" id="tech-list"><li class="empty-state">產出中，明日凌晨更新</li></ul>
-        </section>
-        <section class="section" id="biz">
-            <h2>商管 / 創業</h2>
-            <p class="count">商業分析報告 · 市場研究 · 創業洞察</p>
-            <ul class="file-list" id="biz-list"><li class="empty-state">產出中，明日凌晨更新</li></ul>
-        </section>
-        <section class="section" id="design">
-            <h2>藝術 / 設計</h2>
-            <p class="count">互動設計作品 · 視覺傳達 · 品牌設計</p>
-            <ul class="file-list" id="design-list"><li class="empty-state">產出中，明日凌晨更新</li></ul>
-        </section>
-        <section class="section" id="language">
-            <h2>語言 / 人文</h2>
-            <p class="count">英文 Essay · 學術寫作 · 批判思考</p>
-            <ul class="file-list" id="language-list"><li class="empty-state">產出中，明日凌晨更新</li></ul>
-        </section>
-        <section class="section" id="physics">
-            <h2>物理 / 數學</h2>
-            <p class="count">研究報告 · 數學推導 · 科學探究</p>
-            <ul class="file-list" id="physics-list"><li class="empty-state">產出中，明日凌晨更新</li></ul>
-        </section>
-        <section class="section" id="github">
-            <h2>GitHub 開源專案</h2>
-            <p class="count">開源工具 · Side Project · 程式碼展示</p>
-            <ul class="file-list" id="github-list"><li class="empty-state">產出中，明日凌晨更新</li></ul>
-        </section>
-        <section class="section" id="ctf">
-            <h2>CTF 解題 Writeup</h2>
-            <p class="count">Capture The Flag · 漏洞分析 · 攻擊鏈還原</p>
-            <ul class="file-list" id="ctf-list"><li class="empty-state">產出中，明日凌晨更新</li></ul>
-        </section>
-        <section class="section" id="yt">
-            <h2>YouTube 教學影片</h2>
-            <p class="count">技術教學 · 動畫製作 · 知識傳播</p>
-            <ul class="file-list" id="yt-list"><li class="empty-state">產出中，明日凌晨更新</li></ul>
-        </section>
-    </div>
-    <footer>
-        Automated by Davin Portfolio Engine · tewei02.github.io/Davin-daily-briefs
-    </footer>
-    <script>
-        (function() {
-            const html = document.documentElement;
-            const toggle = document.getElementById('themeToggle');
-
-            const saved = localStorage.getItem('davin-theme');
-            if (saved) { html.setAttribute('data-theme', saved); }
-
-            toggle.addEventListener('click', function() {
-                const current = html.getAttribute('data-theme');
-                const next = current === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', next);
-                localStorage.setItem('davin-theme', next);
-            });
-        })();
-    </script>
+<header>
+<div class="theme-toggle-wrapper"><button class="theme-toggle" id="themeToggle" aria-label="切換淺色/深色模式"><span class="knob"></span></button></div>
+<h1>Davin Daily Briefs</h1>
+<p>清大拾穗 × 交大百川 特殊選才 · 五大方向全自動產出 · 多平台分發</p>
+<div class="updated">最後更新：2026-06-09</div>
+</header>
+<nav>
+<a href="#tech">資訊/資安</a><a href="#biz">商管/創業</a><a href="#design">藝術/設計</a><a href="#language">語言/人文</a>
+<a href="#physics">物理/數學</a><a href="#github">開源專案</a><a href="#ctf">CTF解題</a><a href="#yt">教學影片</a>
+</nav>
+<div class="container"><section class="section" id="tech">
+<h2>資訊 / 資安</h2>
+<p class="count">2 項作品</p>
+<ul class="file-list"><li><span>20260608_Git進階：Rebase vs Merg.md</span><span class="ext-badge">.md</span><time>2026-06-09</time></li>
+<li><span>20260607_Linux命令行技巧：提升效率的10個組.md</span><span class="ext-badge">.md</span><time>2026-06-09</time></li>
+</ul>
+</section>
+<section class="section" id="biz">
+<h2>商管 / 創業</h2>
+<p class="count">2 項作品</p>
+<ul class="file-list"><li><span>20260608_訂閱制商業模式深度解析.md</span><span class="ext-badge">.md</span><time>2026-06-09</time></li>
+<li><span>20260607_台灣高中生創業機會研究.md</span><span class="ext-badge">.md</span><time>2026-06-09</time></li>
+</ul>
+</section>
+<section class="section" id="design">
+<h2>藝術 / 設計</h2>
+<p class="count">2 項作品</p>
+<ul class="file-list"><li><span>20260608_永續發展資訊圖表.html</span><span class="ext-badge">.html</span><time>2026-06-09</time></li>
+<li><span>20260607_CTF競賽海報.html</span><span class="ext-badge">.html</span><time>2026-06-09</time></li>
+</ul>
+</section>
+<section class="section" id="language">
+<h2>語言 / 人文</h2>
+<p class="count">1 項作品</p>
+<ul class="file-list"><li><span>20260608_Climate_Change_and_Technology_.md</span><span class="ext-badge">.md</span><time>2026-06-09</time></li>
+</ul>
+</section>
+<section class="section" id="physics">
+<h2>物理 / 數學</h2>
+<p class="count">1 項作品</p>
+<ul class="file-list"><li><span>20260608_質數的奧秘：RSA加密的數學基礎.md</span><span class="ext-badge">.md</span><time>2026-06-09</time></li>
+</ul>
+</section>
+<section class="section" id="github">
+<h2>GitHub 開源專案</h2>
+<p class="count">0 項作品</p>
+<ul class="file-list"><li class="empty-state">今日產出中，明日凌晨更新</li></ul>
+</section>
+<section class="section" id="ctf">
+<h2>CTF 解題</h2>
+<p class="count">2 項作品</p>
+<ul class="file-list"><li><span>INDEX.md</span><span class="ext-badge">.md</span><time>2026-06-09</time></li>
+<li><span>20260607_1625_Web Security_SQL_Injection_基礎挑戰.md</span><span class="ext-badge">.md</span><time>2026-06-09</time></li>
+</ul>
+</section>
+<section class="section" id="yt">
+<h2>YouTube 教學</h2>
+<p class="count">0 項作品</p>
+<ul class="file-list"><li class="empty-state">今日產出中，明日凌晨更新</li></ul>
+</section>
+</div>
+<footer>Automated by Davin Portfolio Engine · tewei02.github.io/Davin-daily-briefs</footer>
+<script>(function(){var h=document.documentElement,t=document.getElementById("themeToggle");var s=localStorage.getItem("davin-theme");if(s)h.setAttribute("data-theme",s);t.addEventListener("click",function(){var c=h.getAttribute("data-theme"),n=c==="dark"?"light":"dark";h.setAttribute("data-theme",n);localStorage.setItem("davin-theme",n)})})()</script>
 </body>
 </html>
-
