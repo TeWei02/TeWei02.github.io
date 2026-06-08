@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://tewei02.github.io/Davin-daily-briefs/sitemap.xml
+
+User-agent: GPTBot
+Disallow: /
