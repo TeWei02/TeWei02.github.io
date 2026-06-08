@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRA 模型技術詳解 — 柯德瑋 Te-Wei Ko</title>
+    <meta name="description" content="Cognitive Rhythm Alignment (CRA) 模型的技術架構：從語義解析到多模態生成的完整管線。">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .article-page { padding-top: 100px; min-height: 100vh; background: #0a0a0f; color: #e0e0e0; }
+        .article-container { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+        .article-title { font-family: 'Noto Sans TC', sans-serif; font-size: 2rem; font-weight: 900; line-height: 1.4; color: #fff; margin-bottom: 12px; }
+        .article-subtitle { font-size: 1.05rem; color: #888; margin-bottom: 48px; border-left: 3px solid #6c5ce7; padding-left: 16px; }
+        .article-body h2 { font-family: 'Noto Sans TC', sans-serif; font-size: 1.35rem; font-weight: 700; color: #fff; margin-top: 48px; margin-bottom: 16px; }
+        .article-body h2::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #6c5ce7; border-radius: 50%; margin-right: 12px; vertical-align: middle; }
+        .article-body h3 { font-family: 'Noto Sans TC', sans-serif; font-size: 1.1rem; font-weight: 600; color: #ccc; margin-top: 32px; margin-bottom: 12px; }
+        .article-body p { font-size: 1.05rem; line-height: 1.85; margin-bottom: 20px; }
+        .article-body blockquote { border-left: 3px solid #6c5ce7; padding: 12px 20px; margin: 24px 0; color: #b0b0ff; font-style: italic; background: rgba(108,92,231,0.06); border-radius: 0 8px 8px 0; }
+        .article-body strong { color: #fff; font-weight: 600; }
+        .article-body a { color: #a29bfe; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        .article-body a:hover { border-color: #a29bfe; }
+        .article-body hr { border: none; border-top: 1px solid #222; margin: 48px 0; }
+        .article-body code { background: #1a1a2e; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; color: #a29bfe; }
+        .article-body ul, .article-body ol { margin-bottom: 20px; padding-left: 24px; }
+        .article-body li { font-size: 1rem; line-height: 1.8; margin-bottom: 6px; }
+        .tech-diagram { background: #0d0d1a; border: 1px solid #1a1a2e; border-radius: 12px; padding: 24px; margin: 32px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.7; overflow-x: auto; white-space: pre; color: #888; }
+        .tech-diagram .highlight { color: #a29bfe; }
+        .pill-tag { display: inline-block; font-size: 0.75rem; padding: 3px 10px; border-radius: 12px; margin: 2px 4px; background: rgba(108,92,231,0.15); color: #a29bfe; }
+        .article-signature { margin-top: 48px; color: #666; font-size: 0.95rem; }
+        .article-signature a { color: #a29bfe; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">TW</a>
+            <div class="nav-links" id="nav-links">
+                <a href="../index.html#research" class="nav-link">Research</a>
+                <a href="../index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html" class="nav-link">Articles</a>
+                <a href="../publications/" class="nav-link">Publications</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <div class="article-container">
+            <h1 class="article-title">打破文字的牆：<br>CRA 模型如何把故事變成感受</h1>
+            <p class="article-subtitle">ModernReader 的核心引擎技術詳解——從語義解構到多模態重建的完整管線。</p>
+
+            <div class="article-body">
+
+                <h2>一、問題：文字是一道牆</h2>
+                <p>閱讀的本質是解碼。數百年來，我們透過視覺掃描符號，在大腦中重建作者試圖傳遞的資訊。這個過程極度仰賴兩個條件：<strong>專注力</strong>與<strong>語言處理能力</strong>。</p>
+                <p>但對許多人來說——ADHD 患者、閱讀障礙者、憂鬱症導致的認知遲緩——這兩個條件並非理所當然。文字不是橋，是牆。</p>
+                <p>Project H.O.L.O. 提出的核心假設是：<strong>如果故事可以繞過文字解碼階段，直接作用於人類的其他感知通道——聽覺、節奏、空間感——那麼閱讀就不再是少數人的特權。</strong></p>
+
+                <h2>二、CRA 模型的核心架構</h2>
+                <p>Cognitive Rhythm Alignment (CRA) 是一個即時追蹤閱讀行為、注意力狀態與認知節律的系統，並據此動態調適內容的呈現方式。它不是一個靜態的 NLP 模型——它是一個<strong>閉環回饋系統</strong>。</p>
+
+                <div class="tech-diagram">
+<span class="highlight">┌─────────────────────────────────────────────────────────┐</span>
+<span class="highlight">│                    CRA 認知節律對齊模型                    │</span>
+<span class="highlight">├─────────────────────────────────────────────────────────┤</span>
+│                                                         │
+│  文本輸入 ──► 語義解構 ──► 模態分配 ──► 多模態生成 ──► 內容呈現 │
+│                  │                          ▲            │
+│                  │         ┌────────────────┘            │
+│                  ▼         │                             │
+│             認知追蹤 ────► 節律校準                        │
+│            (注意力/閱讀     (動態調適                       │
+│             速度/停留)      呈現參數)                      │
+│                                                         │
+<span class="highlight">└─────────────────────────────────────────────────────────┘</span>
+                </div>
+
+                <h3>2.1 語義解構層（Semantic Ingestion）</h3>
+                <p>輸入文本先經過深度語義分析：段落結構、情感曲線、場景轉換、對話密度。這一步產出的不是「摘要」，而是一張<strong>敘事地圖</strong>——標記了文本中哪些段落適合聽覺化、哪些需要視覺輔助、哪些情感高峰值得放慢節奏。</p>
+
+                <h3>2.2 認知追蹤層（Cognitive Tracking）</h3>
+                <p>在閱讀過程中，系統即時監測多項行為指標：</p>
+                <ul>
+                    <li><strong>閱讀速度</strong>：讀者停留在某個段落多久</li>
+                    <li><strong>注意力偏離</strong>：是否出現頻繁的來回滾動或分心行為</li>
+                    <li><strong>時間節律</strong>：閱讀會話的持續時長與間歇模式</li>
+                </ul>
+                <p>這些數據構成了讀者的<strong>即時認知圖譜</strong>——不是判斷「讀者讀懂了沒有」，而是判斷「讀者當下的認知狀態適合什麼樣的呈現方式」。</p>
+
+                <h3>2.3 節律校準層（Rhythm Calibration）</h3>
+                <p>這是 CRA 最關鍵的環節：系統將認知圖譜與敘事地圖進行對齊，動態調整內容的呈現參數。舉例：</p>
+                <ul>
+                    <li>當注意力開始下降 → 自動切換到聽覺模式（TTS 朗讀），降低視覺負荷</li>
+                    <li>當閱讀速度顯著放緩 → 判斷可能是情感共鳴點 → 延長該段落的背景音效保留時間</li>
+                    <li>當出現來回滾動 → 判斷可能是理解困難 → 自動生成視覺化的場景輔助圖</li>
+                </ul>
+
+                <h2>三、多模態生成管線</h2>
+                <p>節律校準後的輸出進入多模態生成層，將文本轉化為以下形式：</p>
+
+                <p><span class="pill-tag">聽覺模態</span> <span class="pill-tag">視覺模態</span> <span class="pill-tag">觸覺模態</span> <span class="pill-tag">量子語義</span></p>
+
+                <h3>3.1 聽覺層</h3>
+                <p>透過 ElevenLabs API 進行情感參數化的文字轉語音。不只是朗讀——角色的對話帶有對應的情緒色調，場景轉換時背景音效動態變換，敘事節奏與讀者的認知節律同步。</p>
+
+                <h3>3.2 視覺層</h3>
+                <p>根據語義解構結果，生成與當前段落情緒一致的色調、光線、空間暗示。不是「插圖」，是<strong>情感氛圍的視覺化</strong>——讀者不會「看到」角色，但會「感受到」場景的溫度。</p>
+
+                <h3>3.3 量子語義分析</h3>
+                <p>專案中最實驗性的模組。以量子啟發的相似度計算取代傳統的餘弦相似度，在語義空間中捕捉非線性的概念關聯。這使得系統能識別出傳統向量空間中難以捕捉的隱喻結構——例如「微風」與「自由」之間的語義共振。</p>
+
+                <h2>四、13 個專案的生態系統</h2>
+                <p>CRA 模型不是孤立的——它是 ModernReader 生態系統中的核心引擎，由 13 個子專案共同構成：</p>
+
+                <div class="tech-diagram">
+<span class="highlight">                ModernReader 核心</span>
+<span class="highlight">        Semantica · H.O.L.O. · Claw 協議</span>
+                          │
+     ┌────────┬───────────┼───────────┬──────────┐
+     ▼        ▼           │           ▼          ▼
+  基礎設施  前端體驗        │       資料分析   垂直應用
+  (4 repos) (2 repos)      │      (2 repos)  (4 repos)
+                           │
+  qbridge ──── 量子加速    │   StatSigCalculator ─ 內容實驗
+  agent_full ─ Agent 通訊  │   calc-tracker ── 學習分析
+  multithreaded ─ 排程     │
+  packet-monitoring ─ 網路 │   Carbon.Negtive ─ 環境敘事
+                           │   sensory-shield ─ 感知防護
+                           │   Robotic-Navigation
+                           │   Signal-to-System
+                           │   TeWei02.github.io
+                </div>
+
+                <p>設計理念：每個子專案獨立可用，但透過 Semantica 語義引擎與 Claw Agent 協議串聯後，形成一條從物理信號到人類可讀敘事的完整 AI 管線。</p>
+
+                <h2>五、CRA 為什麼與眾不同</h2>
+                <p>市面上的閱讀輔助工具大多在做「加速」——Spritz 逐字顯示、Bionic Reading 加粗前半段——它們的預設是「閱讀的問題是太慢」。</p>
+                <p>CRA 的預設恰恰相反：<strong>閱讀的問題不是速度，是認知頻寬</strong>。當一個人的大腦因為 ADHD 或 MDD 而無法維持穩定的注意力時，加速只會讓情況更糟。真正的解法是讓文字的呈現方式<strong>適應當下的認知狀態</strong>，而不是要求認知狀態去適應文字。</p>
+                <p>這就是 Cognitive Rhythm Alignment 名字的由來：不是強迫節奏一致，而是找到兩者之間的共振點。</p>
+
+                <h2>六、驗證：24 人受試者內實驗</h2>
+                <p>CRA 模型的第一輪實驗採用受試者內設計（within-subjects design），同一批參與者分別在傳統文字模式與 CRA 調適模式下閱讀相同內容。關鍵衡量指標包括：</p>
+                <ul>
+                    <li>閱讀專注時長（sustained attention duration）</li>
+                    <li>內容回憶準確率（recall accuracy）</li>
+                    <li>自評閱讀流暢度（self-reported flow）</li>
+                    <li>認知負荷問卷（NASA-TLX adapted）</li>
+                </ul>
+                <p>完整實驗數據與統計分析將在後續文章中展開。</p>
+
+                <h2>七、下一步</h2>
+                <p>CRA 目前處於早期驗證階段。接下來的迭代方向包括：</p>
+                <ul>
+                    <li>將認知追蹤從行為指標擴展到生理信號（心率變異、皮膚電導）</li>
+                    <li>引入個人化長期學習曲線——同一個讀者在不同日子的認知基線不同</li>
+                    <li>開放 API，讓其他閱讀平台接入 CRA 調適層</li>
+                </ul>
+                <p>最終目標不是造一個更好的閱讀器，而是建立一套能被任何內容平台使用的<strong>認知適應協議</strong>——讓「適性閱讀」變成互聯網的基礎設施，而非某個 app 的付費功能。</p>
+
+                <hr>
+
+                <p class="article-signature">
+                    柯德瑋，2026 年 6 月<br>
+                    專案原始碼：<a href="https://github.com/TeWei02/ModernReader">github.com/TeWei02/ModernReader</a>
+                </p>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

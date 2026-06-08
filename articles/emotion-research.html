@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>當情緒成為研究對象 — 柯德瑋 Te-Wei Ko</title>
+    <meta name="description" content="一個 ADHD/MDD 開發者的自白：從診斷書到 Project H.O.L.O.，科技如何成為情感交流的橋樑。">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .article-page { padding-top: 100px; min-height: 100vh; background: #0a0a0f; color: #e0e0e0; }
+        .article-container { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+        .article-title { font-family: 'Noto Sans TC', sans-serif; font-size: 2rem; font-weight: 900; line-height: 1.4; color: #fff; margin-bottom: 12px; }
+        .article-subtitle { font-size: 1.05rem; color: #888; margin-bottom: 48px; border-left: 3px solid #6c5ce7; padding-left: 16px; }
+        .article-body h2 { font-family: 'Noto Sans TC', sans-serif; font-size: 1.35rem; font-weight: 700; color: #fff; margin-top: 48px; margin-bottom: 16px; }
+        .article-body h2::before { content: ""; display: inline-block; width: 8px; height: 8px; background: #6c5ce7; border-radius: 50%; margin-right: 12px; vertical-align: middle; }
+        .article-body p { font-size: 1.05rem; line-height: 1.85; margin-bottom: 20px; }
+        .article-body blockquote { border-left: 3px solid #6c5ce7; padding: 12px 20px; margin: 24px 0; color: #b0b0ff; font-style: italic; background: rgba(108,92,231,0.06); border-radius: 0 8px 8px 0; }
+        .article-body strong { color: #fff; font-weight: 600; }
+        .article-body a { color: #a29bfe; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        .article-body a:hover { border-color: #a29bfe; }
+        .article-body hr { border: none; border-top: 1px solid #222; margin: 48px 0; }
+        .article-signature { margin-top: 48px; color: #666; font-size: 0.95rem; }
+        .article-signature a { color: #a29bfe; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">TW</a>
+            <div class="nav-links" id="nav-links">
+                <a href="../index.html#research" class="nav-link">Research</a>
+                <a href="../index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html" class="nav-link">Articles</a>
+                <a href="../publications/" class="nav-link">Publications</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <div class="article-container">
+            <h1 class="article-title">當情緒成為研究對象：<br>一個 ADHD/MDD 開發者的自白</h1>
+            <p class="article-subtitle">不是為了賣慘，是為了說清楚——我為什麼站在這裡。</p>
+
+            <div class="article-body">
+
+                <h2>一、診斷書上的兩個名字</h2>
+                <p>我有兩張診斷書。一張寫著 ADHD（注意力不足過動症），確診於 2008 年——那年我才七歲。另一張寫著 MDD（重度憂鬱症），確診於 2022 年——那年我二十一歲。</p>
+                <p>ADHD 陪了我幾乎整個求學階段。小學時坐不住、中學時作業永遠交不出來、老師寫聯絡簿說「聰明但不努力」——這些話我聽了一整個童年。MDD 則是高中畢業後才慢慢浮現：情緒的劇烈起伏、對未來的虛無感、早晨起不了床的沉重。這些不是「想開一點」就能解決的。</p>
+                <p>兩張診斷書，加起來不是一個病人的故事。是一個研究者誕生的起點。</p>
+
+                <h2>二、兩所大學，一段覺醒</h2>
+                <p>2020 年秋天，我進入正修科技大學室內設計系。我以為設計是一條路——視覺、空間、美感。但只讀了一學期，我就知道不對。不是科系的問題，是我的問題：ADHD 讓我在需要長時間專注的工作室課程裡舉步維艱，MDD 則在那一年的冬天全面襲來，最終在 2022 年正式確診。</p>
+                <p>我離開了正修。接下來幾年是漫長的空白——不是什麼都沒做，而是在迷茫中摸索。我試過自學、試過工作、試過什麼都不做。直到我開始接觸程式。</p>
+                <p>程式碼給了我一種前所未有的掌控感。它不 judge 我的情緒，不會因為我分心而懲罰我。我可以寫到一半放空、回來繼續。我可以深夜睡不著時打開 IDE，早上起不來時不必道歉。</p>
+                <p>2025 年秋天，我重新回到大學——南臺科技大學資訊工程系。這一次，我不是來拿學位的。我是來拿工具的。</p>
+                <p>但我仍然覺得少了什麼。我會寫程式、會架伺服器、會訓練模型——但這些技能要拿去解決什麼問題？</p>
+                <p>這個問題困擾了我很久。直到我開始做 Project H.O.L.O.。</p>
+
+                <h2>三、一個命題的浮現</h2>
+                <p>ADHD 讓我很難專注閱讀長篇文字。MDD 讓我在某些日子裡，連一句話都說不完整。</p>
+                <p>但我在寫程式的時候，發現一件事：<strong>程式碼是我能掌控的語言，它不會 judge 我的情緒，也不會因為我分心而懲罰我。</strong></p>
+                <p>於是我開始想：如果文字對某些人來說是障礙，那有沒有另一種方式，可以傳遞文字背後的情感？</p>
+                <p>這就是 Project H.O.L.O. 的起點。</p>
+                <blockquote>「如果我們不僅能閱讀故事，而是能真正地感受它呢？」</blockquote>
+                <p>H.O.L.O. 不是一個 NLP 專案。它是一個命題：<strong>人類的情感交流，能不能突破文字的瓶頸？</strong></p>
+                <p>我為此建立了 Cognitive Rhythm Alignment (CRA) 模型——一個即時追蹤閱讀行為、注意力狀態與認知節律的系統，動態調適內容的呈現方式。我設計了受試者內實驗，招募了 24 位參與者，收集他們在不同閱讀模式下的生理與行為數據。</p>
+                <p>2026 年，這個專案入圍了海峽兩岸創業大賽的決賽。</p>
+
+                <h2>四、我為什麼想回到大學</h2>
+                <p>我 25 歲了。讀過兩所大學。有兩張診斷書。有一個 GitHub 上持續迭代的專案。</p>
+                <p>我不是一個「正常」的學生。但有些教育制度要的，本來就不是「正常」——它們要的是無法被現行招生管道歸類、卻有獨特視角的人。特殊選才這四個字，不是給天才的捷徑，是給那些走過彎路、在彎路上撿到了地圖的人。</p>
+                <p>我的毅力不在於考試成績。我的毅力在於：<strong>從七歲被確診 ADHD 開始，我花了十八年理解自己的大腦怎麼運作，然後用程式把這個理解變成一個能運作的 AI 系統。</strong></p>
+
+                <h2>五、我想要什麼</h2>
+                <p>我想要一個可以同時學習認知科學、心理學、互動設計、與生成式 AI 的環境。</p>
+                <p>不分系的實驗教育方案，讓我可以自主設計學習路徑。跨領域的核心學程，讓我能把情感運算放到人類體驗與心理健康的大框架裡去理解。</p>
+                <p>我不只想做一個更好的 NLP 模型。我想回答一個更大的問題：</p>
+                <blockquote>當一個人的情緒無法被語言捕捉時，科技能不能成為那座橋？</blockquote>
+                <p>對大多數人來說，這是一個研究問題。對我來說，這是我每天面對的現實。</p>
+                <p>我不是來找答案的。我是來找一個能陪我把問題問到底的環境。</p>
+
+                <hr>
+
+                <p class="article-signature">
+                    柯德瑋，2026 年 6 月<br>
+                    GitHub: <a href="https://github.com/TeWei02">github.com/TeWei02</a>
+                </p>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
