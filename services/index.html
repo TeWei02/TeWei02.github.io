@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>服務與合作 — 柯德瑋 Te-Wei Ko</title>
+<meta name="description" content="軟體開發接案、程式家教與專題指導、特殊選才書審檢核。柯德瑋（TeWei02），南臺科技大學資訊工程系，專長 Python 自動化、網頁開發、AI 應用、ROS 2 與系統程式。">
+<meta name="keywords" content="接案, 程式接案, Python接案, 網頁開發, 程式家教, APCS, 專題指導, 特殊選才, 書審, 備審, 台南家教">
+<meta name="author" content="柯德瑋 Te-Wei Ko">
+<link rel="canonical" href="https://tewei02.github.io/services/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="服務與合作 — 柯德瑋 Te-Wei Ko">
+<meta property="og:description" content="軟體開發接案、程式家教與專題指導、特殊選才書審檢核。">
+<meta property="og:url" content="https://tewei02.github.io/services/">
+<link rel="icon" href="../favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-base:#060608; --bg-card:#111118; --bg-card-hover:#16161f; --bg-elevated:#1a1a24;
+  --border-subtle:rgba(255,255,255,.05); --border-default:rgba(255,255,255,.08);
+  --text-primary:#e6e6ed; --text-secondary:#9a9aa6; --text-tertiary:#64646e;
+  --accent:#00d4aa; --accent-dim:rgba(0,212,170,.12);
+  --accent-2:#8b9cf7; --accent-2-dim:rgba(139,156,247,.1);
+  --accent-amber:#e8a850;
+  --font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-tc:'Noto Sans TC',sans-serif;
+  --font-mono:'JetBrains Mono','SF Mono',monospace;
+  --max-width:960px; --radius-md:10px; --radius-lg:16px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;font-size:16px}
+body{
+  font-family:var(--font-sans); background:var(--bg-base); color:var(--text-primary);
+  line-height:1.75;
+}
+body::before{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(900px 500px at 15% -5%, rgba(0,212,170,.07), transparent 60%),
+             radial-gradient(700px 400px at 90% 8%, rgba(139,156,247,.06), transparent 60%);
+}
+.wrap{max-width:var(--max-width); margin:0 auto; padding:0 24px; position:relative; z-index:1}
+
+/* nav */
+.nav{position:sticky; top:0; z-index:50; background:rgba(6,6,8,.86); backdrop-filter:blur(14px); border-bottom:1px solid var(--border-subtle)}
+.nav-inner{max-width:var(--max-width); margin:0 auto; padding:0 24px; height:56px; display:flex; align-items:center; justify-content:space-between}
+.nav-logo{font-family:var(--font-mono); font-weight:700; font-size:15px; color:var(--accent); text-decoration:none; letter-spacing:.05em}
+.nav-links{display:flex; gap:22px; flex-wrap:wrap}
+.nav-link{color:var(--text-secondary); text-decoration:none; font-size:13.5px; transition:color .2s}
+.nav-link:hover{color:var(--accent)}
+
+/* hero */
+header.hero{padding:72px 0 48px}
+.eyebrow{font-family:var(--font-mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; display:block}
+h1{font-family:var(--font-tc); font-size:clamp(28px,5.2vw,44px); font-weight:900; line-height:1.28; letter-spacing:-.01em; margin-bottom:18px}
+h1 em{font-style:normal; color:var(--accent)}
+.lead{color:var(--text-secondary); font-size:16.5px; max-width:44em; font-family:var(--font-tc)}
+.lead strong{color:var(--text-primary)}
+.cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:28px}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:var(--radius-md); text-decoration:none; font-size:15px; font-weight:600; font-family:var(--font-tc); border:1px solid transparent; transition:.2s}
+.btn-primary{background:var(--accent); color:#04120f}
+.btn-primary:hover{background:#00e8bb}
+.btn-ghost{border-color:var(--border-default); color:var(--text-primary)}
+.btn-ghost:hover{border-color:var(--accent); color:var(--accent)}
+
+section{padding:44px 0; border-top:1px solid var(--border-subtle)}
+h2{font-family:var(--font-tc); font-size:clamp(21px,3.4vw,28px); font-weight:700; margin-bottom:6px; letter-spacing:-.01em}
+h2 .num{font-family:var(--font-mono); font-size:14px; color:var(--accent); margin-right:10px; font-weight:500}
+.sub{color:var(--text-tertiary); font-size:14.5px; margin-bottom:26px; font-family:var(--font-tc)}
+
+.card{background:var(--bg-card); border:1px solid var(--border-default); border-radius:var(--radius-lg); padding:24px; margin-bottom:16px}
+.card h3{font-family:var(--font-tc); font-size:17.5px; font-weight:700; margin-bottom:4px}
+.card .tag{display:inline-block; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.06em; color:var(--accent); background:var(--accent-dim); padding:3px 9px; border-radius:999px; margin-bottom:12px}
+.card .tag.blue{color:var(--accent-2); background:var(--accent-2-dim)}
+.card .tag.amber{color:var(--accent-amber); background:rgba(232,168,80,.1)}
+
+ul.clean{list-style:none; margin-top:10px}
+ul.clean li{position:relative; padding-left:20px; margin:7px 0; color:var(--text-secondary); font-size:15px; font-family:var(--font-tc)}
+ul.clean li::before{content:''; position:absolute; left:4px; top:.68em; width:5px; height:5px; border-radius:50%; background:var(--accent); opacity:.75}
+ul.clean li strong{color:var(--text-primary); font-weight:600}
+
+.grid{display:grid; gap:16px}
+@media(min-width:760px){ .g2{grid-template-columns:1fr 1fr} .g3{grid-template-columns:repeat(3,1fr)} }
+
+.price{background:var(--bg-card); border:1px solid var(--border-default); border-radius:var(--radius-lg); padding:22px; display:flex; flex-direction:column}
+.price.hl{border-color:rgba(0,212,170,.35); background:linear-gradient(160deg,rgba(0,212,170,.06),var(--bg-card))}
+.price h4{font-family:var(--font-tc); font-size:16px; margin-bottom:8px; font-weight:700}
+.price .amt{font-family:var(--font-mono); font-size:23px; font-weight:700; color:var(--accent); margin-bottom:2px}
+.price .amt small{font-size:12px; color:var(--text-tertiary); font-weight:400; font-family:var(--font-tc)}
+.price ul{list-style:none; margin:14px 0 0; font-size:14px; color:var(--text-secondary); font-family:var(--font-tc); flex:1}
+.price ul li{margin:5px 0; padding-left:16px; position:relative}
+.price ul li::before{content:'·'; position:absolute; left:4px; color:var(--accent)}
+
+.steps{counter-reset:s; margin-top:14px}
+.step{counter-increment:s; position:relative; padding-left:44px; margin-bottom:16px; font-family:var(--font-tc)}
+.step::before{
+  content:counter(s); position:absolute; left:0; top:0; width:28px; height:28px;
+  border:1px solid rgba(0,212,170,.4); border-radius:50%; color:var(--accent);
+  font-family:var(--font-mono); font-size:13px; display:flex; align-items:center; justify-content:center;
+}
+.step strong{display:block; font-size:15.5px; margin-bottom:2px}
+.step span{color:var(--text-secondary); font-size:14.5px}
+
+.note{background:var(--bg-elevated); border-left:2px solid var(--accent-amber); border-radius:0 var(--radius-md) var(--radius-md) 0; padding:14px 18px; font-size:14.5px; color:var(--text-secondary); font-family:var(--font-tc); margin-top:20px}
+.note strong{color:var(--text-primary)}
+
+.contact{background:linear-gradient(150deg,rgba(0,212,170,.1),rgba(139,156,247,.07)); border:1px solid rgba(0,212,170,.25); border-radius:var(--radius-lg); padding:32px 26px; text-align:center}
+.contact h2{border:none}
+.contact p{color:var(--text-secondary); font-family:var(--font-tc); max-width:38em; margin:0 auto 22px}
+.mail{font-family:var(--font-mono); font-size:15px}
+
+footer{padding:44px 0 64px; border-top:1px solid var(--border-subtle); color:var(--text-tertiary); font-size:13.5px; font-family:var(--font-tc)}
+footer a{color:var(--text-secondary); text-decoration:none}
+footer a:hover{color:var(--accent)}
+a.inline{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(0,212,170,.3)}
+a.inline:hover{border-bottom-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">TW</a>
+    <div class="nav-links">
+      <a href="../" class="nav-link">首頁</a>
+      <a href="../#projects" class="nav-link">Projects</a>
+      <a href="../articles/" class="nav-link">Articles</a>
+      <a href="./" class="nav-link" style="color:var(--accent)">服務</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Services · 服務與合作</span>
+    <h1>你可以直接<em>把問題交給我</em>。</h1>
+    <p class="lead">
+      我是柯德瑋，南臺科技大學資訊工程系。寫程式不是為了交作業，是為了解決具體的麻煩：
+      把重複的手動流程變成腳本、把散落的資料變成能看的儀表板、把一個模糊的想法變成能跑的東西。
+      <strong>以下是三件我現在有在接的事。</strong>
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="mailto:tewei.ko0418@gmail.com?subject=%E8%A9%A2%E5%95%8F%EF%BC%9A%E6%9C%8D%E5%8B%99%E5%90%88%E4%BD%9C">寄信談需求 →</a>
+      <a class="btn btn-ghost" href="#pricing">看定價</a>
+    </div>
+  </div>
+</header>
+
+<section id="dev">
+  <div class="wrap">
+    <h2><span class="num">01</span>軟體開發接案</h2>
+    <p class="sub">小型專案為主。先談需求，確認可行再報價——我不接我做不到的事。</p>
+    <div class="card">
+      <span class="tag">Python · Web · AI</span>
+      <h3>我可以幫你做這些</h3>
+      <ul class="clean">
+        <li><strong>自動化與資料處理</strong>：Excel／CSV 批次清理、報表自動產生、重複性流程腳本化</li>
+        <li><strong>爬蟲與資料蒐集</strong>：公開資料抓取、整理成結構化表格或資料庫</li>
+        <li><strong>網頁與小型全端</strong>：靜態網站、Flask 後端、表單與資料庫（SQLite／PostgreSQL）</li>
+        <li><strong>AI／LLM 應用整合</strong>：語意分析、文字分類、RAG 問答、API 串接（我做過情感運算與多模態語意建模的研究）</li>
+        <li><strong>系統與網路程式</strong>：C++17／Python 多執行緒、封包監測與流量統計、效能調校</li>
+        <li><strong>機器人與 ROS 2</strong>：感測融合、SLAM 前端、路徑規劃、模擬環境（Gazebo／Nav2）</li>
+        <li><strong>資料視覺化與儀表板</strong>：把散落的數字變成一眼看得懂的東西</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag blue">合作流程</span>
+      <h3>怎麼進行</h3>
+      <div class="steps">
+        <div class="step"><strong>聊需求</strong><span>用 email 或線上一通 15 分鐘，講清楚你想解決什麼、什麼時候要。</span></div>
+        <div class="step"><strong>給範圍與報價</strong><span>我會回一份「做什麼、不做什麼、多少錢、什麼時候交」的書面說明。</span></div>
+        <div class="step"><strong>分段交付</strong><span>拆成可驗收的小段，每段你都能先看到東西再往下走，不用等到最後才發現方向錯了。</span></div>
+        <div class="step"><strong>交付與說明</strong><span>程式碼、使用說明，以及一段「之後要改可以從哪裡改」的說明。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tutor">
+  <div class="wrap">
+    <h2><span class="num">02</span>程式家教與專題指導</h2>
+    <p class="sub">線上（Google Meet／Discord）為主，台南可面授。</p>
+    <div class="grid g2">
+      <div class="card">
+        <span class="tag">高中職</span>
+        <h3>程式設計入門與檢定</h3>
+        <ul class="clean">
+          <li>Python／C++ 從零開始，用「做得出東西」的方式教</li>
+          <li>APCS 觀念題與實作題準備</li>
+          <li>資訊科專題、科展、小論文題目討論</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag blue">大學</span>
+        <h3>科目輔導與作業解題</h3>
+        <ul class="clean">
+          <li>資料結構、演算法、作業系統、計算機網路</li>
+          <li>程式作業除錯（不代寫，帶你找出為什麼錯）</li>
+          <li>期末專題從題目發想到實作與報告</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <span class="tag amber">為什麼找我</span>
+      <h3>我不是只會考試的人</h3>
+      <ul class="clean">
+        <li>手上的專案橫跨 <strong>ROS 2 機器人導航、量子計算模擬器、多模態語意分析、即時封包監測</strong>——教的東西我自己在做</li>
+        <li>Project H.O.L.O. 入圍 <strong>2026 海峽兩岸創業大賽決賽</strong>，知道怎麼把技術講成人話</li>
+        <li>訓練路徑橫跨機械製圖、建築與室內設計再到資工，<strong>很懂「從不會到會」卡在哪</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="beishen">
+  <div class="wrap">
+    <h2><span class="num">03</span>特殊選才／個人申請 書審檢核</h2>
+    <p class="sub">我自己走過一遍，也被「漏繳」嚇過一次，所以做了一套流程與工具。</p>
+    <div class="card">
+      <span class="tag">申請季限定</span>
+      <h3>我會幫你檢查的事</h3>
+      <ul class="clean">
+        <li><strong>逐項對規格</strong>：每間學校要求的格式、字數、頁數、檔名、檔案格式，一項一項核對</li>
+        <li><strong>缺件與截止日盤點</strong>：把「你以為交了」和「系統真的收到」之間的落差找出來</li>
+        <li><strong>自傳／學習計畫結構建議</strong>：不代寫，但會告訴你哪裡讀起來卡、哪裡該提前</li>
+        <li><strong>手寫稿紙試算</strong>：先算好字數會落在第幾頁，不用寫完才發現要重抄</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag blue">免費先試</span>
+      <h3>書審資料包產生器</h3>
+      <ul class="clean">
+        <li>單校缺件檢查、截止日倒數、手寫稿紙字數計算</li>
+        <li>純本機執行，<strong>身分證影本與成績單不會上傳到任何伺服器</strong></li>
+        <li>不用註冊、不用安裝，點開就能用</li>
+      </ul>
+      <p style="margin-top:16px"><a class="inline" href="https://tewei02.github.io/writings/tool/">→ 直接開啟免費版</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2><span class="num">04</span>定價</h2>
+    <p class="sub">以下為參考區間，實際依需求複雜度與時程調整。談需求不用錢。</p>
+    <div class="grid g3">
+      <div class="price">
+        <h4>程式家教</h4>
+        <div class="amt">NT$700<small> 起／小時</small></div>
+        <ul>
+          <li>高中職程式設計／APCS：NT$700–1,000</li>
+          <li>大學科目輔導：NT$800–1,200</li>
+          <li>線上與面授同價</li>
+          <li>一次至少 1 小時</li>
+        </ul>
+      </div>
+      <div class="price hl">
+        <h4>軟體開發接案</h4>
+        <div class="amt">NT$8,000<small> 起／案</small></div>
+        <ul>
+          <li>依需求報價，先談範圍</li>
+          <li>小型自動化腳本：數千元</li>
+          <li>網站／資料系統：萬元以上</li>
+          <li>可分兩段付款（開工 50%／驗收 50%）</li>
+        </ul>
+      </div>
+      <div class="price">
+        <h4>書審檢核</h4>
+        <div class="amt">NT$1,500<small> ／包</small></div>
+        <ul>
+          <li>逐項規格核對與缺件盤點</li>
+          <li>含一份書面回饋</li>
+          <li>多校多包另有優惠</li>
+          <li>先免費用工具，不夠再談</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">
+      <strong>關於價格：</strong>如果你不確定該付多少，直接寫信說你的預算和問題，我會誠實告訴你這件事值不值得做、
+      以及有沒有更便宜的做法（很多時候答案是用現成工具就好，不用花錢）。
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="num">05</span>作品與經歷</h2>
+    <p class="sub">先看東西，再決定要不要談。</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3>代表專案</h3>
+        <ul class="clean">
+          <li><a class="inline" href="https://github.com/TeWei02/ModernReader">ModernReader</a> — 故事的多感官重建引擎（NLP／多模態）</li>
+          <li><a class="inline" href="https://github.com/TeWei02/From-Signal-to-System">From-Signal-to-System</a> — 把機器人導航視為端到端通訊系統（ROS 2）</li>
+          <li><a class="inline" href="https://github.com/TeWei02/qbridge">qbridge</a> — 量子計算模擬器（C++17／Python）</li>
+          <li><a class="inline" href="https://github.com/TeWei02/Real-time-Packet-Monitoring-and-Traffic-Statistics-System">即時封包監測與流量統計系統</a>（Python）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>其他</h3>
+        <ul class="clean">
+          <li><a class="inline" href="https://github.com/TeWei02">GitHub — 全部專案</a></li>
+          <li><a class="inline" href="https://orcid.org/0009-0003-1348-3558">ORCID 0009-0003-1348-3558</a></li>
+          <li><a class="inline" href="https://tewei02.github.io/">個人網站（研究與文章）</a></li>
+          <li><a class="inline" href="https://tewei02.github.io/writings/">特殊選才書審系列文章</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="contact">
+      <h2>先聊需求，不用先決定。</h2>
+      <p>把你的問題寫給我，我會回覆「能不能做、大概多少、多久」。不合適我也會直接說。</p>
+      <a class="btn btn-primary mail" href="mailto:tewei.ko0418@gmail.com?subject=%E8%A9%A2%E5%95%8F%EF%BC%9A%E6%9C%8D%E5%8B%99%E5%90%88%E4%BD%9C">tewei.ko0418@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="margin-bottom:8px">柯德瑋 Te-Wei Ko · 南臺科技大學資訊工程系</p>
+    <p><a href="../">首頁</a> · <a href="https://github.com/TeWei02">GitHub</a> · <a href="https://tewei02.github.io/writings/">書審文章</a> · <a href="https://tewei02.github.io/writings/tool/">免費工具</a></p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"柯德瑋 Te-Wei Ko — 軟體開發與教學服務",
+  "url":"https://tewei02.github.io/services/",
+  "email":"tewei.ko0418@gmail.com",
+  "description":"軟體開發接案、程式家教與專題指導、特殊選才書審檢核。",
+  "areaServed":"Taiwan",
+  "availableLanguage":["zh-TW","en"],
+  "provider":{"@type":"Person","name":"柯德瑋 Te-Wei Ko","url":"https://tewei02.github.io/","affiliation":{"@type":"Organization","name":"Southern Taiwan University of Science and Technology"}},
+  "hasOfferCatalog":{
+    "@type":"OfferCatalog",
+    "name":"服務項目",
+    "itemListElement":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"軟體開發接案"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"程式家教與專題指導"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"特殊選才書審檢核"}}
+    ]
+  }
+}
+</script>
+
+</body>
+</html>
