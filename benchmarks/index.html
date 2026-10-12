@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>實測基準 — 柯德瑋 Te-Wei Ko</title>
+    <meta name="description" content="兩個專案的實測基準：機器人路徑追蹤的前瞻距離掃描，以及封包分析管線的階段成本。每一項都由專案自己的程式量測、寫成 JSON，再由本頁直接讀取渲染——包含對專案本身不利的結果。">
+    <meta name="author" content="柯德瑋 Te-Wei Ko">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="柯德瑋 Te-Wei Ko">
+    <meta property="og:title" content="實測基準 — 量出來的，不是宣稱的">
+    <meta property="og:description" content="前瞻距離掃描與封包管線階段成本，含對專案本身不利的發現。">
+    <meta property="og:url" content="https://tewei02.github.io/benchmarks/">
+    <link rel="canonical" href="https://tewei02.github.io/benchmarks/">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .bench-page { background: var(--bg-base); min-height: 100vh; padding-top: var(--nav-h); }
+        .bench-container { max-width: var(--max-width); margin: 0 auto; padding: 64px 24px 96px; }
+        .bench-label {
+            font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+        }
+        .bench-title {
+            font-family: var(--font-tc); font-size: 2.4rem; font-weight: 900;
+            color: var(--text-primary); line-height: 1.25; margin-bottom: 16px;
+        }
+        .bench-desc { color: var(--text-secondary); font-size: 1.02rem; line-height: 1.8; max-width: 760px; }
+        .bench-desc strong { color: var(--text-primary); font-weight: 600; }
+        .bench-block {
+            background: var(--bg-card); border: 1px solid var(--border-default);
+            border-radius: var(--radius-lg); padding: 28px 26px; margin-top: 32px;
+        }
+        .bench-head {
+            display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline;
+            justify-content: space-between; margin-bottom: 10px;
+        }
+        .bench-head h2 {
+            font-family: var(--font-tc); font-size: 1.32rem; font-weight: 700;
+            color: var(--text-primary); margin: 0;
+        }
+        .bench-head a { font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); text-decoration: none; }
+        .bench-head a:hover { text-decoration: underline; }
+        .bench-why { color: var(--text-secondary); font-size: 0.94rem; line-height: 1.75; margin: 0 0 20px; }
+        .bench-chart svg { display: block; width: 100%; height: auto; }
+        .bench-legend {
+            display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px;
+            font-size: 0.84rem; color: var(--text-secondary);
+        }
+        .bench-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+        .bench-status {
+            font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-tertiary);
+            margin: 16px 0 0;
+        }
+        .bench-status.ok { color: var(--accent); }
+        .bench-status.bad { color: #e06c75; }
+        .bench-note {
+            color: var(--text-secondary); font-size: 0.92rem; line-height: 1.8;
+            margin: 12px 0 0; border-left: 2px solid var(--accent-dim); padding-left: 14px;
+        }
+        .bench-block details { margin-top: 20px; }
+        .bench-block summary {
+            cursor: pointer; font-family: var(--font-mono); font-size: 0.82rem;
+            color: var(--text-tertiary); padding: 6px 0;
+        }
+        .bench-block summary:hover { color: var(--accent); }
+        .bench-table { overflow-x: auto; margin-top: 12px; }
+        .bench-table table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+        .bench-table th, .bench-table td {
+            text-align: right; padding: 8px 12px; white-space: nowrap;
+            border-bottom: 1px solid var(--border-subtle);
+            font-family: var(--font-mono); color: var(--text-secondary);
+        }
+        .bench-table th { color: var(--text-tertiary); font-weight: 500; text-align: right; }
+        .bench-table td:first-child, .bench-table th:first-child { text-align: left; }
+        .bench-table tr.hl td { color: var(--accent); }
+        .bench-points { list-style: none; padding: 0; margin: 0; }
+        .bench-points li {
+            color: var(--text-secondary); font-size: 0.94rem; line-height: 1.8;
+            padding: 10px 0 10px 22px; position: relative;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .bench-points li:last-child { border-bottom: 0; }
+        .bench-points li::before {
+            content: ""; position: absolute; left: 4px; top: 19px;
+            width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+        }
+        .bench-points strong { color: var(--text-primary); font-weight: 600; }
+        .bench-points code {
+            font-family: var(--font-mono); font-size: 0.86em;
+            color: var(--accent-2); background: var(--accent-2-dim);
+            padding: 1px 6px; border-radius: var(--radius-sm);
+        }
+        @media (max-width: 640px) {
+            .bench-container { padding: 40px 18px 64px; }
+            .bench-title { font-size: 1.9rem; }
+            .bench-block { padding: 22px 18px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">TW</a>
+            <div class="nav-links" id="nav-links">
+                <a href="../index.html#research" class="nav-link">Research</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+                <a href="../index.html#projects" class="nav-link">Projects</a>
+                <a href="../articles/" class="nav-link">Articles</a>
+                <a href="../publications/" class="nav-link">Publications</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="bench-page">
+        <div class="bench-container">
+            <p class="bench-label">Measured / not asserted</p>
+            <h1 class="bench-title">實測基準</h1>
+            <p class="bench-desc">
+                專案裡最容易被寫得漂亮、也最容易被含糊帶過的，就是效能。這一頁把兩個專案
+                <strong>自己量出來的數字</strong>放在一起：每一項都由專案內的程式跑出來、寫成機器可讀的
+                JSON，再由本頁直接讀取渲染。所以頁面上的數字不可能跟資料檔脫節——而且裡面
+                <strong>包含對專案本身不利的結果</strong>，那才是量測真正的價值。
+            </p>
+
+            <section class="bench-block">
+                <div class="bench-head">
+                    <h2>機器人路徑追蹤：前瞻距離掃描</h2>
+                    <a href="https://github.com/TeWei02/Robotic-Navigation-and-Exploration" target="_blank" rel="noopener">Robotic-Navigation-and-Exploration →</a>
+                </div>
+                <p class="bench-why">
+                    這個專案原本只有一組固定參數的參考執行，而且檔案裡明白寫著「不是 benchmark」。
+                    在訓練權重沒有隨附的情況下，唯一誠實的做法是：把其他變數全部固定，只掃描古典
+                    基準唯一的參數——前瞻距離 <code style="font-family:var(--font-mono);color:var(--accent-2)">Ld</code>。
+                </p>
+                <div class="bench-chart" id="ros-chart"></div>
+                <p class="bench-status" id="ros-status">載入中…</p>
+                <p class="bench-note" id="ros-note"></p>
+                <details>
+                    <summary>完整數據（10 個前瞻距離 × 6 個情境）</summary>
+                    <div class="bench-table" id="ros-table"></div>
+                </details>
+            </section>
+
+            <section class="bench-block">
+                <div class="bench-head">
+                    <h2>封包分析管線：階段成本</h2>
+                    <a href="https://github.com/TeWei02/Real-time-Packet-Monitoring-and-Traffic-Statistics-System" target="_blank" rel="noopener">Real-time-Packet-Monitoring… →</a>
+                </div>
+                <p class="bench-why">
+                    這個專案的 README 原本明說「專案各處都沒有回報任何量測結果」。補上這件事不需要
+                    抓任何真實流量——只量管線在它自己產生的擷取檔上的成本，就足以回答「時間花在哪」。
+                </p>
+                <div class="bench-chart" id="pkt-chart"></div>
+                <div class="bench-legend" id="pkt-legend"></div>
+                <p class="bench-status" id="pkt-status">載入中…</p>
+                <p class="bench-note" id="pkt-note"></p>
+                <details>
+                    <summary>完整數據（4 種擷取大小）</summary>
+                    <div class="bench-table" id="pkt-table"></div>
+                </details>
+            </section>
+
+            <section class="bench-block">
+                <h2 style="font-family:var(--font-tc);font-size:1.32rem;font-weight:700;color:var(--text-primary);margin:0 0 14px">方法與誠實護欄</h2>
+                <ul class="bench-points">
+                    <li>
+                        <strong>沿用產生正式資料的同一條程式路徑。</strong>路徑追蹤的掃描直接 import
+                        產生已發佈資料的模組、改它的模組層參數，每一列都走完全相同的 episode 迴圈、
+                        獎勵函式與終止條件——<strong>沒有重新實作任何一段</strong>。
+                    </li>
+                    <li>
+                        <strong>護欄是內建的，不是事後補的。</strong>掃描刻意包含已發佈的
+                        <code>Ld = 30</code>，該列逐欄與已發佈的 <code>reference.json</code> 比對，
+                        不符就非零退出。所以「掃描沒跑歪」是被驗證的，不是被相信的。
+                    </li>
+                    <li>
+                        <strong>只量自己的成本。</strong>封包的基準不擷取、也不量測任何網路流量；
+                        合成封包由固定種子產生，重複多次取中位數，並把執行環境寫進同一個檔案。
+                        絕對時間取決於機器，跨機器可轉移的是<strong>縮放趨勢</strong>。
+                    </li>
+                    <li>
+                        <strong>不利的結果照樣發佈。</strong>路徑追蹤那張圖上，專案原本採用的設定
+                        並不是好的工作點——這件事就寫在圖上與表格裡，沒有被藏起來。
+                    </li>
+                    <li>
+                        <strong>這一頁不寫死任何數字。</strong>最佳點、百分比、表格內容全部從 JSON
+                        推導。重新量測、資料變了，這一頁自己就會跟著變。
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="benchmarks.js"></script>
+</body>
+</html>

@@ -796,3 +796,50 @@ a { color: inherit; text-decoration: none; }
     .hero-avatar { width: 72px; height: 72px; }
     .project-featured-title { font-size: 1.35rem; }
 }
+
+/* ---------- benchmarks callout ---------- */
+.bench-callout {
+    display: block;
+    margin-top: 24px;
+    padding: 24px 26px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color 0.25s var(--ease-out), background 0.25s var(--ease-out);
+}
+.bench-callout:hover { border-color: var(--accent); background: var(--bg-card-hover); }
+.bench-callout-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.bench-callout-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+.bench-callout-arrow {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--text-tertiary);
+    transition: transform 0.25s var(--ease-out), color 0.25s var(--ease-out);
+}
+.bench-callout:hover .bench-callout-arrow { color: var(--accent); transform: translateX(4px); }
+.bench-callout-title {
+    font-family: var(--font-tc);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+}
+.bench-callout-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 0;
+}
