@@ -45,6 +45,8 @@
         .bench-head a:hover { text-decoration: underline; }
         .bench-why { color: var(--text-secondary); font-size: 0.94rem; line-height: 1.75; margin: 0 0 20px; }
         .bench-chart svg { display: block; width: 100%; height: auto; }
+        /* 從外部以 #ros-chart / #pkt-chart 連進來時，別被固定導覽遮住 */
+        .bench-chart { scroll-margin-top: calc(var(--nav-h) + 28px); }
         .bench-legend {
             display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px;
             font-size: 0.84rem; color: var(--text-secondary);
